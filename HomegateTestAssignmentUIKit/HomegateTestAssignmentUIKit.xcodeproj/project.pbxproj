@@ -92,6 +92,9 @@
 		6C541B4C27248DCE005F6124 /* TabMenuContainerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C541B4627248DCE005F6124 /* TabMenuContainerModels.swift */; };
 		6C541B4D27248DCE005F6124 /* TabMenuContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C541B4727248DCE005F6124 /* TabMenuContainerViewController.swift */; };
 		6C541B4E27248DCE005F6124 /* TabMenuContainerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C541B4827248DCE005F6124 /* TabMenuContainerInteractor.swift */; };
+		6C541B502724940F005F6124 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C541B4F2724940F005F6124 /* Home.storyboard */; };
+		6C541B5227249422005F6124 /* Favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C541B5127249422005F6124 /* Favorites.storyboard */; };
+		6C541B542724942C005F6124 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C541B532724942C005F6124 /* Account.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,6 +204,9 @@
 		6C541B4627248DCE005F6124 /* TabMenuContainerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuContainerModels.swift; sourceTree = "<group>"; };
 		6C541B4727248DCE005F6124 /* TabMenuContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuContainerViewController.swift; sourceTree = "<group>"; };
 		6C541B4827248DCE005F6124 /* TabMenuContainerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuContainerInteractor.swift; sourceTree = "<group>"; };
+		6C541B4F2724940F005F6124 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		6C541B5127249422005F6124 /* Favorites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorites.storyboard; sourceTree = "<group>"; };
+		6C541B532724942C005F6124 /* Account.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +310,9 @@
 			children = (
 				6C541A6B27247EB3005F6124 /* LaunchScreen.storyboard */,
 				6C541A6327247EB0005F6124 /* Main.storyboard */,
+				6C541B4F2724940F005F6124 /* Home.storyboard */,
+				6C541B5127249422005F6124 /* Favorites.storyboard */,
+				6C541B532724942C005F6124 /* Account.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -662,6 +671,9 @@
 				6C541A6D27247EB3005F6124 /* LaunchScreen.storyboard in Resources */,
 				6C541A6A27247EB3005F6124 /* Assets.xcassets in Resources */,
 				6C541A6527247EB0005F6124 /* Main.storyboard in Resources */,
+				6C541B502724940F005F6124 /* Home.storyboard in Resources */,
+				6C541B542724942C005F6124 /* Account.storyboard in Resources */,
+				6C541B5227249422005F6124 /* Favorites.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

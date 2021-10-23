@@ -14,7 +14,11 @@ import UIKit
 
 protocol TabMenuContainerDisplayLogic: AnyObject
 {
-    func displaySomething(viewModel: TabMenuContainer.Something.ViewModel)
+    // MARK: - List of ContainerViewController functions
+    // MARK:
+    
+    func displayInitControllers(viewModel: TabMenuContainer.InitControllers.ViewModel)
+    func displayTabButton(viewModel: TabMenuContainer.TabButton.ViewModel)
 }
 
 class TabMenuContainerViewController: BaseViewController, TabMenuContainerDisplayLogic
@@ -64,26 +68,144 @@ class TabMenuContainerViewController: BaseViewController, TabMenuContainerDispla
         }
     }
     
+    // MARK: Outlets
+    
+    ///
+    // Header
+    ///
+    
+    @IBOutlet weak var imgLogo: UIImageView!
+    
+    ///
+    // Container
+    ///
+    
+    // Main
+    @IBOutlet weak var viewContent: UIView!
+    
+    // Tabs
+    @IBOutlet weak var viewTabBar: UIView!
+    @IBOutlet weak var viewTabBottom: UIView!
+    
+    // Container collections
+    @IBOutlet var viewsTabContainer: [UIView]!
+    @IBOutlet var imgsTabContainer: [UIImageView]!
+    @IBOutlet var lblsTabContainer: [UILabel]!
+    @IBOutlet var btnsTabContainer: [UIButton]!
+    
+    // MARK: - Properties
+    // MARK:
+    
+    // List of view controllers
+    var homeViewController: UINavigationController!
+    var favoritesViewController: UINavigationController!
+    var accountViewController: UINavigationController!
+    
+    // Array that contains view controllers
+    var viewControllers: [UINavigationController]!
+    
+    // Current selected index
+    var selectedIndex:Int = 0
+    var previousIndex:Int = -1
+    
+    var isFirstTimeLoaded = false
+    
     // MARK: View lifecycle
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        doSomething()
+        
+        // Configure view
+        configureView()
+        
+        // Load view controllers
+        interactor?.handleViewControllerInitialisation(request: TabMenuContainer.InitControllers.Request())
     }
     
-    // MARK: Do something
+    // MARK: Configuration
     
-    //@IBOutlet weak var nameTextField: UITextField!
-    
-    func doSomething()
-    {
-        let request = TabMenuContainer.Something.Request()
-        interactor?.doSomething(request: request)
+    func configureView () {
+        
+        ///
+        // Configure tab buttons header
+        ///
+                
+        // Render tab image as template to make them black
+        for img in self.imgsTabContainer {
+            img.backgroundColor = UIColor.clear
+
+            let templateImage = img.image?.withRenderingMode(.alwaysTemplate)
+            img.image = templateImage
+            let templateHiglightedImage = img.highlightedImage?.withRenderingMode(.alwaysTemplate)
+            img.highlightedImage = templateHiglightedImage
+            img.tintColor = UIColor.label
+        }
     }
     
-    func displaySomething(viewModel: TabMenuContainer.Something.ViewModel)
-    {
-        //nameTextField.text = viewModel.name
+    // MARK: Button actions
+        
+    // Handle tab button tap
+    @IBAction func containerButtonTapped(_ sender: UIButton) {
+        interactor?.handleTabBarButtons(request: TabMenuContainer.TabButton.Request(sender: sender))
+    }
+    
+    // MARK: - Implement display functions
+    // MARK:
+    
+    func displayInitControllers(viewModel: TabMenuContainer.InitControllers.ViewModel) {
+        
+        // Get storyboards
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        // Get view controllers
+        
+        homeViewController = storyboard.instantiateViewController(withIdentifier: "HomeNavigationView") as? UINavigationController
+        favoritesViewController = storyboard.instantiateViewController(withIdentifier: "FavoritesNavigationView") as? UINavigationController
+        accountViewController = storyboard.instantiateViewController(withIdentifier: "AccountNavigationView") as? UINavigationController
+        
+        // Save instantiated references in array
+        viewControllers = [homeViewController, favoritesViewController, accountViewController]
+        
+        // Set initial vc
+        containerButtonTapped(btnsTabContainer[0])
+    }
+    
+    // MARK: Tab bar buttons handling
+    
+    func displayTabButton(viewModel: TabMenuContainer.TabButton.ViewModel) {
+        
+        // Index already selected
+        if selectedIndex == viewModel.sender.tag && isFirstTimeLoaded == true {
+            return
+        }
+        isFirstTimeLoaded = true
+        
+        // Update indexes
+        previousIndex = selectedIndex
+        selectedIndex = viewModel.sender.tag
+        
+        // Unselect current button
+        btnsTabContainer[previousIndex].isSelected = false
+        viewsTabContainer[previousIndex].alpha = 1.0
+        imgsTabContainer[previousIndex].isHighlighted = false
+        
+        // Get and remove previous view controller
+        let previousVC = viewControllers[previousIndex]
+        previousVC.willMove(toParent: nil)
+        previousVC.view.removeFromSuperview()
+        previousVC.removeFromParent()
+        
+        // Select tapped button
+        viewModel.sender.isSelected = true
+        viewsTabContainer[selectedIndex].alpha = 1.0
+        imgsTabContainer[selectedIndex].isHighlighted = true
+        
+        // Get and add next view controller
+        let vc = viewControllers[selectedIndex]
+        addChild(vc)
+        vc.view.frame = viewContent.bounds
+        viewContent.addSubview(vc.view)
+        vc.didMove(toParent: self)
     }
 }

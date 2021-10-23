@@ -14,18 +14,38 @@ import UIKit
 
 enum TabMenuContainer
 {
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
+    // MARK: -
+    // MARK: Use cases
+    // MARK: -
+    
+    // Init controllers model
+    enum InitControllers
     {
+        struct Request
+        {
+        }
+        struct Response
+        {
+        }
+        struct ViewModel
+        {
+        }
     }
-    struct Response
+    
+    // Tab Button
+    enum TabButton
     {
+        struct Request
+        {
+            var sender: UIButton
+        }
+        struct Response
+        {
+            var sender: UIButton
+        }
+        struct ViewModel
+        {
+            var sender: UIButton
+        }
     }
-    struct ViewModel
-    {
-    }
-  }
 }

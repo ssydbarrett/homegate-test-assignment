@@ -14,18 +14,28 @@ import UIKit
 
 protocol TabMenuContainerPresentationLogic
 {
-  func presentSomething(response: TabMenuContainer.Something.Response)
+    // List of ContainerPresenter functions
+    func presentViewControllerInitialisation(response: TabMenuContainer.InitControllers.Response)
+    func presentTabBarButtons(response: TabMenuContainer.TabButton.Response)
 }
 
 class TabMenuContainerPresenter: TabMenuContainerPresentationLogic
 {
-  weak var viewController: TabMenuContainerDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: TabMenuContainer.Something.Response)
-  {
-    let viewModel = TabMenuContainer.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    weak var viewController: TabMenuContainerDisplayLogic?
+    
+    // MARK: - Implement presenter functions
+    // MARK:
+    
+    // MARK: View controller initialisation
+    
+    func presentViewControllerInitialisation(response: TabMenuContainer.InitControllers.Response) {
+        viewController?.displayInitControllers(viewModel: TabMenuContainer.InitControllers.ViewModel())
+        
+    }
+    
+    // MARK: Tab bar buttons handling
+    
+    func presentTabBarButtons(response: TabMenuContainer.TabButton.Response) {
+        viewController?.displayTabButton(viewModel: TabMenuContainer.TabButton.ViewModel(sender: response.sender))
+    }
 }

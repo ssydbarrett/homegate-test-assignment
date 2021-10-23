@@ -88,8 +88,6 @@ class SplashViewController: BaseViewController, SplashDisplayLogic
     
     func configureView() {
         
-        // Set background
-        self.view.backgroundColor = Color.backgroundWhite
     }
     
     // MARK: - Animation

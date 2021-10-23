@@ -14,28 +14,33 @@ import UIKit
 
 protocol TabMenuContainerBusinessLogic
 {
-  func doSomething(request: TabMenuContainer.Something.Request)
+    func handleViewControllerInitialisation(request: TabMenuContainer.InitControllers.Request)
+    func handleTabBarButtons(request: TabMenuContainer.TabButton.Request)
 }
 
 protocol TabMenuContainerDataStore
 {
-  //var name: String { get set }
+    //var name: String { get set }
 }
 
 class TabMenuContainerInteractor: TabMenuContainerBusinessLogic, TabMenuContainerDataStore
 {
-  var presenter: TabMenuContainerPresentationLogic?
-  var worker: TabMenuContainerWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: TabMenuContainer.Something.Request)
-  {
-    worker = TabMenuContainerWorker()
-    worker?.doSomeWork()
+    var presenter: TabMenuContainerPresentationLogic?
+    var worker: TabMenuContainerWorker?
+    //var name: String = ""
     
-    let response = TabMenuContainer.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    // MARK: - Implement interactor functions
+    // MARK:
+    
+    // MARK: View controller initialisation
+    
+    func handleViewControllerInitialisation(request: TabMenuContainer.InitControllers.Request) {
+        presenter?.presentViewControllerInitialisation(response: TabMenuContainer.InitControllers.Response())
+    }
+    
+    // MARK: Tab bar buttons handling
+    
+    func handleTabBarButtons(request: TabMenuContainer.TabButton.Request) {
+        presenter?.presentTabBarButtons(response: TabMenuContainer.TabButton.Response(sender: request.sender))
+    }
 }
