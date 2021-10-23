@@ -69,7 +69,13 @@ class HomeListViewController: BaseViewController, HomeListDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        doSomething()
+        
+        // Test network call
+        PropertiesNetworkManager.getProperties { result, status, error in
+            print(result ?? "")
+            print(status ?? "")
+            print(error ?? "")
+        }
     }
     
     // MARK: Do something
