@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1WE-IW-rzZ">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="zQP-wy-LE3">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RFa-wk-8fh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController navigationBarHidden="YES" id="1WE-IW-rzZ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WQq-As-vuS">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Ohq-Zu-z5B" kind="relationship" relationship="rootViewController" id="INc-VX-JjP"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-379" y="57"/>
+        </scene>
+        <!--Splash View Controller-->
+        <scene sceneID="ZCy-6I-64V">
+            <objects>
+                <viewController storyboardIdentifier="SplashViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ohq-Zu-z5B" customClass="SplashViewController" customModule="HomegateTestAssignmentUIKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PWa-lw-IPA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-named" translatesAutoresizingMaskIntoConstraints="NO" id="lit-eb-Q4T">
+                                <rect key="frame" x="34.5" y="416" width="345" height="64"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fN9-we-S0j"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lit-eb-Q4T" firstAttribute="centerX" secondItem="PWa-lw-IPA" secondAttribute="centerX" id="762-ug-tkp"/>
+                            <constraint firstItem="lit-eb-Q4T" firstAttribute="centerY" secondItem="PWa-lw-IPA" secondAttribute="centerY" id="Iez-7M-Zwc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="RkB-uy-JNH"/>
+                    <connections>
+                        <outlet property="imgLogo" destination="lit-eb-Q4T" id="Y8K-0o-M7d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6JY-FG-TIG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="491" y="57"/>
+        </scene>
+        <!--Tab Menu Container View Controller-->
+        <scene sceneID="qUv-Rn-9GU">
+            <objects>
+                <viewController storyboardIdentifier="TabMenuContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tns-cR-jRD" customClass="TabMenuContainerViewController" customModule="HomegateTestAssignmentUIKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3z9-08-Qny">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="lVd-uA-stO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="23K-Ir-m8F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1343" y="57"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo-named" width="345" height="64"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
