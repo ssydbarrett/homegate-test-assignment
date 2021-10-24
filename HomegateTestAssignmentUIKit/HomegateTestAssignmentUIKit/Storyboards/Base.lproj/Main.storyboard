@@ -466,7 +466,6 @@
                         <viewLayoutGuide key="safeArea" id="xEV-Ob-37J"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="QxE-7n-0Gs" firstAttribute="centerX" secondItem="RTV-mb-9Ii" secondAttribute="centerX" id="Ffc-hE-swg"/>
                             <constraint firstItem="QxE-7n-0Gs" firstAttribute="leading" secondItem="xEV-Ob-37J" secondAttribute="leading" constant="16" id="XeP-R9-cgU"/>
                             <constraint firstItem="QxE-7n-0Gs" firstAttribute="centerY" secondItem="RTV-mb-9Ii" secondAttribute="centerY" id="fYI-Ql-KMk"/>
                             <constraint firstItem="i4W-e9-fDL" firstAttribute="leading" secondItem="xEV-Ob-37J" secondAttribute="leading" id="gd1-et-sPM"/>
