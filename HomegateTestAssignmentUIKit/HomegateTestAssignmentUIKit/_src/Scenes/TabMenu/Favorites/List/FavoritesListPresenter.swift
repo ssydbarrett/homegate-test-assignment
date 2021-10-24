@@ -14,18 +14,25 @@ import UIKit
 
 protocol FavoritesListPresentationLogic
 {
-  func presentSomething(response: FavoritesList.Something.Response)
+    // Handle API response
+    func presentPropertyList(response: FavoritesList.PropertyList.Response)
 }
 
 class FavoritesListPresenter: FavoritesListPresentationLogic
 {
-  weak var viewController: FavoritesListDisplayLogic?
-  
-  // MARK: Do something
-  
-  func presentSomething(response: FavoritesList.Something.Response)
-  {
-    let viewModel = FavoritesList.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    weak var viewController: FavoritesListDisplayLogic?
+    
+    // MARK: Core Data response
+    
+    func presentPropertyList(response: FavoritesList.PropertyList.Response) {
+        if response.error != nil {
+            
+            // Call view controller display error
+            viewController?.displayPropertyListCDError(error: FavoritesList.PropertyList.Error(error: response.error!))
+        } else {
+            
+            // Call successful view controller
+            viewController?.displayPropertyList(viewModel: FavoritesList.PropertyList.ViewModel(proppertyList: response.result ?? [PropertyModel]()))
+        }
+    }
 }

@@ -14,28 +14,35 @@ import UIKit
 
 protocol FavoritesListBusinessLogic
 {
-  func doSomething(request: FavoritesList.Something.Request)
+    // Call API
+    func handlePropertyList(request: FavoritesList.PropertyList.Request)
 }
 
 protocol FavoritesListDataStore
 {
-  //var name: String { get set }
+    //var name: String { get set }
 }
 
 class FavoritesListInteractor: FavoritesListBusinessLogic, FavoritesListDataStore
 {
-  var presenter: FavoritesListPresentationLogic?
-  var worker: FavoritesListWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: FavoritesList.Something.Request)
-  {
-    worker = FavoritesListWorker()
-    worker?.doSomeWork()
+    var presenter: FavoritesListPresentationLogic?
+    var worker: FavoritesListWorker?
+    //var name: String = ""
     
-    let response = FavoritesList.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    // MARK: Call Core Data
+    
+    func handlePropertyList(request: FavoritesList.PropertyList.Request) {
+        
+        // Get all favoriteproperties
+        do {
+            let favorites: [PropertyModel] = try CoreDataManager.fetchAllFavorites()
+            
+            // Call presenter with response
+            presenter?.presentPropertyList(response: FavoritesList.PropertyList.Response(result: favorites, error: nil))
+        } catch let error as NSError {
+            
+            // Call presenter with error
+            presenter?.presentPropertyList(response: FavoritesList.PropertyList.Response(result: nil, error: error))
+        }
+    }
 }

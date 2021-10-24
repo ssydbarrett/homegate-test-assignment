@@ -114,7 +114,7 @@ class HomeListViewController: BaseViewController, HomeListDisplayLogic
         }
         
         // Clear content inset of a table view
-        self.tblTable.contentInset = UIEdgeInsets(top: -16.0, left: 0, bottom: 16, right: 0)
+        self.tblTable.contentInset = UIEdgeInsets(top: -16.0, left: 0, bottom: 24, right: 0)
     }
     
     
@@ -280,7 +280,7 @@ extension HomeListViewController: UITableViewDelegate {
     
     // Cell height for row at index path
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        UITableView.automaticDimension
+        return UITableView.automaticDimension
     }
     
     // Height for header

@@ -150,7 +150,7 @@ class CoreDataManager: NSObject {
                 
                 // Get arrays
                 propertyModel.pictures = try JSONDecoder().decode([String]?.self, from: favorite.value(forKey: "pictures") as? Data ?? Data())
-                propertyModel.externalUrls = try JSONDecoder().decode([ExternalUrlModel]?.self, from: favorite.value(forKey: "pictures") as? Data ?? Data())
+                propertyModel.externalUrls = try JSONDecoder().decode([ExternalUrlModel]?.self, from: favorite.value(forKey: "externalUrls") as? Data ?? Data())
                 
                 // Append to array
                 favorites.append(propertyModel)
@@ -258,7 +258,7 @@ class CoreDataManager: NSObject {
         do {
             
             // Save arrays
-            property.setValue(try JSONEncoder().encode(favorite.externalUrls), forKeyPath: "pictures")
+            property.setValue(try JSONEncoder().encode(favorite.pictures), forKeyPath: "pictures")
             property.setValue(try JSONEncoder().encode(favorite.externalUrls), forKeyPath: "externalUrls")
             
             // Save favorite to managed context an new entity

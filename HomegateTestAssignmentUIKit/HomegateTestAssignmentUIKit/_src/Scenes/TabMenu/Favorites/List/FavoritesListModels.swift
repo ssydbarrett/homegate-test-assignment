@@ -14,18 +14,25 @@ import UIKit
 
 enum FavoritesList
 {
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
+    // MARK: Use cases
+    
+    enum PropertyList
     {
+        struct Request
+        {
+        }
+        struct Response
+        {
+            var result: [PropertyModel]?
+            var error: NSError?
+        }
+        struct ViewModel
+        {
+            var proppertyList: [PropertyModel]
+        }
+        struct Error
+        {
+            var error: NSError
+        }
     }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
-    }
-  }
 }
