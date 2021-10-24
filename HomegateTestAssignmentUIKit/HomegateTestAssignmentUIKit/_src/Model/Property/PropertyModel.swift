@@ -19,7 +19,7 @@ class PropertyModel: BaseModel {
     var title: String? = ""
     var description: String? = ""
     var objectCategory: String? = ""
-    var objectType: String? = ""
+    var objectType: Int? = 0
     var objectTypeLabel: String? = ""
     var numberRooms: Float? = 0
     var floor: Int? = 0
@@ -61,7 +61,7 @@ class PropertyModel: BaseModel {
     var contactPhone: String? = ""
     
     // Urls
-    var externalUrls: ExternalUrlModel? = ExternalUrlModel()
+    var externalUrls: [ExternalUrlModel]? = [ExternalUrlModel]()
     
     // MARK:- Constructors
     
@@ -73,13 +73,14 @@ class PropertyModel: BaseModel {
     required init (from decoder: Decoder) throws {
         try super.init(from: decoder)
         
+        // Add specification for model
         let container =  try decoder.container (keyedBy: CodingKeys.self)
         advertisementId = try container.decodeIfPresent (Int.self, forKey: .advertisementId)
         score = try container.decodeIfPresent (Float.self, forKey: .score)
         title = try container.decodeIfPresent (String.self, forKey: .title)
         description = try container.decodeIfPresent (String.self, forKey: .description)
         objectCategory = try container.decodeIfPresent (String.self, forKey: .objectCategory)
-        objectType = try container.decodeIfPresent (String.self, forKey: .objectType)
+        objectType = try container.decodeIfPresent (Int.self, forKey: .objectType)
         objectTypeLabel = try container.decodeIfPresent (String.self, forKey: .objectTypeLabel)
         numberRooms = try container.decodeIfPresent (Float.self, forKey: .numberRooms)
         floor = try container.decodeIfPresent (Int.self, forKey: .floor)
@@ -109,7 +110,7 @@ class PropertyModel: BaseModel {
         agencyPhoneDay = try container.decodeIfPresent (String.self, forKey: .agencyLogoUrl)
         contactPerson = try container.decodeIfPresent (String.self, forKey: .contactPerson)
         contactPhone = try container.decodeIfPresent (String.self, forKey: .contactPhone)
-        externalUrls = try container.decodeIfPresent (ExternalUrlModel.self, forKey: .externalUrls)
+        externalUrls = try container.decodeIfPresent ([ExternalUrlModel].self, forKey: .externalUrls)
     }
     
     // Encoding

@@ -14,11 +14,15 @@ import UIKit
 
 protocol HomeListDisplayLogic: AnyObject
 {
-    func displaySomething(viewModel: HomeList.Something.ViewModel)
+    
+    // Display Properties lists from API
+    func displayPropertyList(viewModel: HomeList.PropertyList.ViewModel)
+    func displayPropertyListAPIError(error: HomeList.PropertyList.Error)
 }
 
 class HomeListViewController: BaseViewController, HomeListDisplayLogic
 {
+    
     var interactor: HomeListBusinessLogic?
     var router: (NSObjectProtocol & HomeListRoutingLogic & HomeListDataPassing)?
     
@@ -64,32 +68,200 @@ class HomeListViewController: BaseViewController, HomeListDisplayLogic
         }
     }
     
+    // MARK: Outlets
+    
+    @IBOutlet weak var tblTable: UITableView!
+    
+    @IBOutlet weak var viewEmptyError: UIView!
+    @IBOutlet weak var lblEmptyError: UILabel!
+    @IBOutlet weak var btnTryAgain: UIButton!
+    
+    // MARK: Properties
+    
+    var propertyList: [PropertyModel] = [PropertyModel]()
+    
     // MARK: View lifecycle
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        // Test network call
-        PropertiesNetworkManager.getProperties { result, status, error in
-            print(result ?? "")
-            print(status ?? "")
-            print(error ?? "")
+        // Configure view
+        configureView()
+        
+        // Call API
+        callAPI()
+    }
+    
+    // Configure view
+    func configureView() {
+        
+        // Init table view and set delegate
+        if self.tblTable != nil {
+            self.tblTable.delegate = self
+            self.tblTable.dataSource = self
+            
+            // Regster table cell
+            registerCellsForTableView()
+        }
+        
+        // Clear content inset of a table view
+        self.tblTable.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    
+    // Handle empty / error view
+    func displayEmptyErrorView(with label: String, and alpha: CGFloat) {
+        
+        // Show / hide empty / error view and show table based on alpha
+        self.viewEmptyError.alpha = alpha
+        self.tblTable.alpha = alpha == 0.0 ? 1.0 : 0.0
+        
+        // Send subview to front / back
+        if alpha == 0.0 {
+            self.view.sendSubviewToBack(self.viewEmptyError)
+        } else {
+            self.view.bringSubviewToFront(self.viewEmptyError)
+        }
+        
+        // Set label
+        self.lblEmptyError.text = label
+    }
+    
+    // MARK: API
+    
+    // Call API
+    func callAPI() {
+        
+        // Hide empty view
+        self.displayEmptyErrorView(with: "", and: 0.0)
+        
+        // Start activity indicator
+        self.startActivityIndicator(onView: nil, color: .label)
+        
+        // Call interactor
+        self.interactor?.handlePropertyList(request: HomeList.PropertyList.Request())
+    }
+    
+    // MARK: Button actions
+    
+    // Handle try again action
+    @IBAction func tryAgain(_ sender: UIButton) {
+        
+        // Call API again
+        self.callAPI()
+    }
+    
+    // MARK: Display api result
+    
+    func displayPropertyList(viewModel: HomeList.PropertyList.ViewModel) {
+        
+        // On main thread
+        DispatchQueue.main.async {
+            
+            // Stop activity indicator
+            self.stopActivityIndicator()
+            
+            // Check if empty model
+            if viewModel.proppertyList.count == 0 {
+                
+                // Clear model
+                self.propertyList = [PropertyModel]()
+                
+                // Show error view
+                self.displayEmptyErrorView(with: "Property list is empty.", and: 1.0)
+                return
+            }
+            
+            // Hide error view
+            else {
+                self.displayEmptyErrorView(with: "", and: 0.0)
+            }
+            
+            // Update model and reload table
+            self.propertyList = viewModel.proppertyList
+            self.tblTable.reloadData()
         }
     }
     
-    // MARK: Do something
-    
-    //@IBOutlet weak var nameTextField: UITextField!
-    
-    func doSomething()
-    {
-        let request = HomeList.Something.Request()
-        interactor?.doSomething(request: request)
-    }
-    
-    func displaySomething(viewModel: HomeList.Something.ViewModel)
-    {
-        //nameTextField.text = viewModel.name
+    func displayPropertyListAPIError(error: HomeList.PropertyList.Error) {
+        
+        // On main thread
+        DispatchQueue.main.async {
+            
+            // Stop activity indicator
+            self.stopActivityIndicator()
+            
+            // Clear model
+            self.propertyList = [PropertyModel]()
+            
+            // Show error view
+            self.displayEmptyErrorView(with: error.error.rawValue, and: 1.0)
+        }
     }
 }
+
+// MARK: - Register cells
+// MARK:
+
+extension HomeListViewController {
+    
+    // Register vehicle cell
+    func registerCellsForTableView() {
+        let nibName = UINib(nibName: "PropertyListTableViewCell", bundle:nil)
+        self.tblTable.register(nibName, forCellReuseIdentifier: "PropertyListTableViewCell")
+    }
+}
+
+// MARK: - UITableViewDelegate
+// MARK:
+
+extension HomeListViewController: UITableViewDelegate {
+    
+    // Estimated cell height
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    // Cell height for row at index path
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
+    }
+    
+    // Height for header
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.0
+    }
+    
+    // Header view
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+}
+
+// MARK: - UITableViewDatasource
+// MARK:
+
+extension HomeListViewController: UITableViewDataSource {
+    
+    // Number of sections
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    // Number of rows in section
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.propertyList.count
+    }
+    
+    // Cell For Row at IndexPath
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return PropertyListTableViewCell.initCell(
+            tableView,
+            itemAtIndexPath: indexPath,
+            params: ["model": self.propertyList[indexPath.row]],
+            context: self)
+    }
+    
+}
+

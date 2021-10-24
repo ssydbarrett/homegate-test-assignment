@@ -32,6 +32,7 @@ class ExternalUrlModel: BaseModel {
     required init (from decoder: Decoder) throws {
         try super.init(from: decoder)
         
+        // Add specification for model
         let container =  try decoder.container (keyedBy: CodingKeys.self)
         url = try container.decodeIfPresent (String.self, forKey: .url)
         type = try container.decodeIfPresent (String.self, forKey: .type)

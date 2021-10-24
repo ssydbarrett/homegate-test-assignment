@@ -31,6 +31,7 @@ class BaseModel: Codable, Hashable {
     required init (from decoder: Decoder) throws {
         // try super.init(from: decoder)
         
+        // Add specification for model
         let container =  try decoder.container (keyedBy: CodingKeys.self)
         id = try container.decodeIfPresent (Int.self, forKey: .id)
         timestamp = try container.decodeIfPresent (Int.self, forKey: .timestamp)

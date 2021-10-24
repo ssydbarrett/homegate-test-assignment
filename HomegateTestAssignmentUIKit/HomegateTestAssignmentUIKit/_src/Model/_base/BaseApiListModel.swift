@@ -33,6 +33,7 @@ class BaseApiListModel<T: BaseModel>: BaseModel {
     required init (from decoder: Decoder) throws {
         try super.init(from: decoder)
         
+        // Add specification for model
         let container =  try decoder.container (keyedBy: CodingKeys.self)
         resultCount = try container.decodeIfPresent (Int.self, forKey: .resultCount)
         start = try container.decodeIfPresent (Int.self, forKey: .start)

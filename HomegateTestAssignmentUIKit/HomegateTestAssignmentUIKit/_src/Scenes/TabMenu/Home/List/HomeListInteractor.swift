@@ -14,7 +14,9 @@ import UIKit
 
 protocol HomeListBusinessLogic
 {
-  func doSomething(request: HomeList.Something.Request)
+  
+    // Call API
+    func handlePropertyList(request: HomeList.PropertyList.Request)
 }
 
 protocol HomeListDataStore
@@ -28,14 +30,15 @@ class HomeListInteractor: HomeListBusinessLogic, HomeListDataStore
   var worker: HomeListWorker?
   //var name: String = ""
   
-  // MARK: Do something
+  // MARK: Call API
   
-  func doSomething(request: HomeList.Something.Request)
-  {
-    worker = HomeListWorker()
-    worker?.doSomeWork()
-    
-    let response = HomeList.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    func handlePropertyList(request: HomeList.PropertyList.Request) {
+        
+        // Get all properties
+        PropertiesNetworkManager.getProperties { result, status, error in
+            
+            // Call presenter with result
+            self.presenter?.presentPropertyList(response: HomeList.PropertyList.Response(result: result, status: status, networkError: error))
+        }
+    }
 }

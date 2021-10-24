@@ -14,18 +14,53 @@ import UIKit
 
 protocol HomeListPresentationLogic
 {
-  func presentSomething(response: HomeList.Something.Response)
+  
+    // Handle API response
+    func presentPropertyList(response: HomeList.PropertyList.Response)
 }
 
 class HomeListPresenter: HomeListPresentationLogic
 {
   weak var viewController: HomeListDisplayLogic?
   
-  // MARK: Do something
+  // MARK: API response
   
-  func presentSomething(response: HomeList.Something.Response)
-  {
-    let viewModel = HomeList.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
-  }
+    func presentPropertyList(response: HomeList.PropertyList.Response) {
+        
+        // Check for errors
+        if response.networkError != nil {
+            viewController?.displayPropertyListAPIError(error: HomeList.PropertyList.Error(error: response.networkError ?? .unknownError))
+        }
+        
+        // Handle empty response
+        else if response.result ?? "" == "" {
+            viewController?.displayPropertyListAPIError(error: HomeList.PropertyList.Error(error: .noResponseData))
+        }
+                                                        
+        // Handle successful response
+        else {
+            
+            // Generating JSON data
+            guard let data = (response.result ?? "").data(using: .utf8, allowLossyConversion: false) else {
+                viewController?.displayPropertyListAPIError(error: HomeList.PropertyList.Error(error: .badResponse))
+                return
+            }
+            
+            // Decode data into model
+            do {
+                let decoder = JSONDecoder()
+                let apiResponseModel = try decoder.decode(BaseApiListModel<PropertyModel>.self, from: data)
+                
+                // Return result
+                viewController?.displayPropertyList(viewModel: HomeList.PropertyList.ViewModel(proppertyList: apiResponseModel.items ?? [PropertyModel]()))
+            }
+            catch {
+                
+                // Catch decoding error
+                viewController?.displayPropertyListAPIError(error: HomeList.PropertyList.Error(error: .decodingFailed))
+                return
+            }
+            
+        }
+    }
 }

@@ -105,6 +105,10 @@
 		6C541B6D2724D6AB005F6124 /* ExternalUrlModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C541B6C2724D6AB005F6124 /* ExternalUrlModel.swift */; };
 		6C541B6F2724D904005F6124 /* PropertyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C541B6E2724D904005F6124 /* PropertyModel.swift */; };
 		6C541B732724EE90005F6124 /* BaseApiListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C541B722724EE90005F6124 /* BaseApiListModel.swift */; };
+		6C541B7827256877005F6124 /* PropertyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C541B7727256877005F6124 /* PropertyListTableViewCell.swift */; };
+		6C541B7A27256886005F6124 /* PropertyListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C541B7927256886005F6124 /* PropertyListTableViewCell.xib */; };
+		6C541B7C272569E5005F6124 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C541B7B272569E5005F6124 /* FavoritesTableViewCell.swift */; };
+		6C541B7E272569F1005F6124 /* FavoritesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C541B7D272569F1005F6124 /* FavoritesTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,6 +231,10 @@
 		6C541B6C2724D6AB005F6124 /* ExternalUrlModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalUrlModel.swift; sourceTree = "<group>"; };
 		6C541B6E2724D904005F6124 /* PropertyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyModel.swift; sourceTree = "<group>"; };
 		6C541B722724EE90005F6124 /* BaseApiListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApiListModel.swift; sourceTree = "<group>"; };
+		6C541B7727256877005F6124 /* PropertyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListTableViewCell.swift; sourceTree = "<group>"; };
+		6C541B7927256886005F6124 /* PropertyListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PropertyListTableViewCell.xib; sourceTree = "<group>"; };
+		6C541B7B272569E5005F6124 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
+		6C541B7D272569F1005F6124 /* FavoritesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -401,6 +409,7 @@
 		6C541A9A27248199005F6124 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6C541B74272567E0005F6124 /* TableViewCells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -642,6 +651,33 @@
 			path = Property;
 			sourceTree = "<group>";
 		};
+		6C541B74272567E0005F6124 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				6C541B76272567FB005F6124 /* PropertyList */,
+				6C541B75272567F1005F6124 /* Favorites */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		6C541B75272567F1005F6124 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				6C541B7B272569E5005F6124 /* FavoritesTableViewCell.swift */,
+				6C541B7D272569F1005F6124 /* FavoritesTableViewCell.xib */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		6C541B76272567FB005F6124 /* PropertyList */ = {
+			isa = PBXGroup;
+			children = (
+				6C541B7727256877005F6124 /* PropertyListTableViewCell.swift */,
+				6C541B7927256886005F6124 /* PropertyListTableViewCell.xib */,
+			);
+			path = PropertyList;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -746,6 +782,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C541B7A27256886005F6124 /* PropertyListTableViewCell.xib in Resources */,
+				6C541B7E272569F1005F6124 /* FavoritesTableViewCell.xib in Resources */,
 				6C541A6D27247EB3005F6124 /* LaunchScreen.storyboard in Resources */,
 				6C541A6A27247EB3005F6124 /* Assets.xcassets in Resources */,
 				6C541A6527247EB0005F6124 /* Main.storyboard in Resources */,
@@ -822,7 +860,9 @@
 				6C541AAD272482A7005F6124 /* BaseViewController.swift in Sources */,
 				6C541B0E27248563005F6124 /* AccountInteractor.swift in Sources */,
 				6C541B3427248714005F6124 /* Colors.swift in Sources */,
+				6C541B7827256877005F6124 /* PropertyListTableViewCell.swift in Sources */,
 				6C541AF0272482DA005F6124 /* NVActivityIndicatorAnimationLineScale.swift in Sources */,
+				6C541B7C272569E5005F6124 /* FavoritesTableViewCell.swift in Sources */,
 				6C541AE1272482DA005F6124 /* NVActivityIndicatorAnimationBallScale.swift in Sources */,
 				6C541B4E27248DCE005F6124 /* TabMenuContainerInteractor.swift in Sources */,
 				6C541AE2272482DA005F6124 /* NVActivityIndicatorAnimationBallZigZag.swift in Sources */,

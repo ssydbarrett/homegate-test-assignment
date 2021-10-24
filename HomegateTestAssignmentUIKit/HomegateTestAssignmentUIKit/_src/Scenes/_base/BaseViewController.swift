@@ -207,6 +207,17 @@ class BaseViewController: UIViewController {
         activityIndicator.startAnimating()
     }
     
+    // Stop activity indicator
+    func stopActivityIndicator(onView: UIView? = nil) {
+        
+        // Guard activity indicator
+        let activityIndicatorView = onView ?? self.viewActivityIndicator!
+        
+        // Clear subviews and send to back
+        activityIndicatorView.subviews.forEach({ $0.removeFromSuperview() })
+        activityIndicatorView.superview?.sendSubviewToBack(self.viewActivityIndicator)
+    }
+    
     // MARK: - Outlet Actions
     // MARK:
     

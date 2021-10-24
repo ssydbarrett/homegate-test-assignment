@@ -53,6 +53,9 @@ public enum NetworkError : String, Error {
     // Encoding failed
     case encodingFailed = "Parameter encoding failed."
     
+    // Decoding failed
+    case decodingFailed = "Parameter decoding failed."
+    
     // Request build failed
     case requestFailed = "Request build failed."
     
@@ -71,4 +74,6 @@ public enum NetworkError : String, Error {
     // Response error
     case responseError = "Response error."
     
+    // Unknown error
+    case unknownError = "Unknown error."
 }

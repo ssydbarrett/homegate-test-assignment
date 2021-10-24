@@ -14,18 +14,26 @@ import UIKit
 
 enum HomeList
 {
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
+    // MARK: Use cases
+    
+    enum PropertyList
     {
+        struct Request
+        {
+        }
+        struct Response
+        {
+            var result: String?
+            var status: Int?
+            var networkError: NetworkError?
+        }
+        struct ViewModel
+        {
+            var proppertyList: [PropertyModel]
+        }
+        struct Error
+        {
+            var error: NetworkError
+        }
     }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
-    }
-  }
 }
