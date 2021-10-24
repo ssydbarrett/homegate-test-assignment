@@ -72,7 +72,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62z-OM-CJd">
                                         <rect key="frame" x="0.0" y="0.0" width="138" height="60"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-home" highlightedImage="ic-home-selected" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ocH-Jf-g45">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-home" highlightedImage="ic-home-selected" translatesAutoresizingMaskIntoConstraints="NO" id="ocH-Jf-g45">
                                                 <rect key="frame" x="55" y="8" width="28" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="cxy-bm-78t"/>

@@ -101,6 +101,10 @@
 		6C541B622724BAAF005F6124 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C541B5F2724BAAF005F6124 /* ParameterEncoding.swift */; };
 		6C541B632724BAAF005F6124 /* URLParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C541B602724BAAF005F6124 /* URLParameterEncoding.swift */; };
 		6C541B642724BAAF005F6124 /* JSONParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C541B612724BAAF005F6124 /* JSONParameterEncoding.swift */; };
+		6C541B6B2724D675005F6124 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C541B6A2724D675005F6124 /* BaseModel.swift */; };
+		6C541B6D2724D6AB005F6124 /* ExternalUrlModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C541B6C2724D6AB005F6124 /* ExternalUrlModel.swift */; };
+		6C541B6F2724D904005F6124 /* PropertyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C541B6E2724D904005F6124 /* PropertyModel.swift */; };
+		6C541B712724E757005F6124 /* PropertyApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C541B702724E757005F6124 /* PropertyApiModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -219,6 +223,10 @@
 		6C541B5F2724BAAF005F6124 /* ParameterEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
 		6C541B602724BAAF005F6124 /* URLParameterEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLParameterEncoding.swift; sourceTree = "<group>"; };
 		6C541B612724BAAF005F6124 /* JSONParameterEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoding.swift; sourceTree = "<group>"; };
+		6C541B6A2724D675005F6124 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		6C541B6C2724D6AB005F6124 /* ExternalUrlModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalUrlModel.swift; sourceTree = "<group>"; };
+		6C541B6E2724D904005F6124 /* PropertyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyModel.swift; sourceTree = "<group>"; };
+		6C541B702724E757005F6124 /* PropertyApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyApiModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -400,6 +408,9 @@
 		6C541A9B272481A2005F6124 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6C541B652724D491005F6124 /* _base */,
+				6C541B672724D526005F6124 /* Property */,
+				6C541B662724D4AF005F6124 /* ExternalUrl */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -606,6 +617,31 @@
 			path = Encoding;
 			sourceTree = "<group>";
 		};
+		6C541B652724D491005F6124 /* _base */ = {
+			isa = PBXGroup;
+			children = (
+				6C541B6A2724D675005F6124 /* BaseModel.swift */,
+			);
+			path = _base;
+			sourceTree = "<group>";
+		};
+		6C541B662724D4AF005F6124 /* ExternalUrl */ = {
+			isa = PBXGroup;
+			children = (
+				6C541B6C2724D6AB005F6124 /* ExternalUrlModel.swift */,
+			);
+			path = ExternalUrl;
+			sourceTree = "<group>";
+		};
+		6C541B672724D526005F6124 /* Property */ = {
+			isa = PBXGroup;
+			children = (
+				6C541B702724E757005F6124 /* PropertyApiModel.swift */,
+				6C541B6E2724D904005F6124 /* PropertyModel.swift */,
+			);
+			path = Property;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -760,6 +796,7 @@
 				6C541A6827247EB0005F6124 /* HomegateTestAssignmentUIKit.xcdatamodeld in Sources */,
 				6C541B4B27248DCE005F6124 /* TabMenuContainerRouter.swift in Sources */,
 				6C541AEA272482DA005F6124 /* NVActivityIndicatorAnimationBlank.swift in Sources */,
+				6C541B6F2724D904005F6124 /* PropertyModel.swift in Sources */,
 				6C541AF2272482DA005F6124 /* NVActivityIndicatorAnimationPacman.swift in Sources */,
 				6C541ADC272482DA005F6124 /* NVActivityIndicatorAnimationBallTrianglePath.swift in Sources */,
 				6C541A5E27247EB0005F6124 /* AppDelegate.swift in Sources */,
@@ -774,6 +811,7 @@
 				6C541AF3272482DA005F6124 /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
 				6C541AE7272482DA005F6124 /* NVActivityIndicatorAnimationSquareSpin.swift in Sources */,
 				6C541B0927248563005F6124 /* AccountPresenter.swift in Sources */,
+				6C541B6B2724D675005F6124 /* BaseModel.swift in Sources */,
 				6C541B31272485E0005F6124 /* HomeDetailsViewController.swift in Sources */,
 				6C541B582724B797005F6124 /* PropertiesNetworkManager.swift in Sources */,
 				6C541B4A27248DCE005F6124 /* TabMenuContainerWorker.swift in Sources */,
@@ -792,6 +830,7 @@
 				6C541B192724859C005F6124 /* FavoritesListViewController.swift in Sources */,
 				6C541AF7272482DA005F6124 /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift in Sources */,
 				6C541AA6272481D0005F6124 /* SplashViewController.swift in Sources */,
+				6C541B6D2724D6AB005F6124 /* ExternalUrlModel.swift in Sources */,
 				6C541AD8272482DA005F6124 /* NVActivityIndicatorAnimationBallRotate.swift in Sources */,
 				6C541AA2272481D0005F6124 /* SplashPresenter.swift in Sources */,
 				6C541B2D272485E0005F6124 /* HomeDetailsPresenter.swift in Sources */,
@@ -799,6 +838,7 @@
 				6C541AE3272482DA005F6124 /* NVActivityIndicatorAnimationBallBeat.swift in Sources */,
 				6C541ADA272482DA005F6124 /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */,
 				6C541B5D2724B837005F6124 /* ConstantsAPI.swift in Sources */,
+				6C541B712724E757005F6124 /* PropertyApiModel.swift in Sources */,
 				6C541AA7272481D0005F6124 /* SplashInteractor.swift in Sources */,
 				6C541AF1272482DA005F6124 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */,
 				6C541ADD272482DA005F6124 /* NVActivityIndicatorAnimationBallDoubleBounce.swift in Sources */,
