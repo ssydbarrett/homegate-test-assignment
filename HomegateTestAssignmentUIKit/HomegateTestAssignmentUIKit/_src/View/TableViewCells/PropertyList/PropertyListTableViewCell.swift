@@ -104,8 +104,8 @@ class PropertyListTableViewCell: UITableViewCell {
         imgLocationMarker.tintColor = Color.foregroundPurple
         lblStreet.text = String(format: "%@%@%@",
                                 model.street ?? "",
-                                model.street == nil || model.street == "" || model.text == nil || model.text == "" ? "" : ", ",
-                               model.text ?? "")
+                                model.street == nil || model.street == "" || model.city == nil || model.city == "" ? "" : ", ",
+                               model.city ?? "")
         lblStreet.textColor = Color.foregroundPurple
         
         // Configure image placeholder
