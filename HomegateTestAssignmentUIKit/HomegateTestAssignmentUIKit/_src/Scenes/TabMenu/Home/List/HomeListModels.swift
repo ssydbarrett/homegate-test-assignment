@@ -36,4 +36,43 @@ enum HomeList
             var error: NetworkError
         }
     }
+    
+    enum FavoriteList
+    {
+        struct Request
+        {
+        }
+        struct Response
+        {
+            var result: [Int]?
+            var error: NSError?
+        }
+        struct ViewModel
+        {
+            var favoriteIdList: [Int]
+        }
+        struct Error
+        {
+            var error: NSError
+        }
+    }
+    
+    enum UpdateFavorite
+    {
+        struct Request
+        {
+            var model: PropertyModel
+        }
+        struct Response
+        {
+            var error: NSError?
+        }
+        struct ViewModel
+        {
+        }
+        struct Error
+        {
+            var error: NSError
+        }
+    }
 }

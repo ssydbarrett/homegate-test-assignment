@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Property" representedClassName="Property" syncable="YES" codeGenerationType="class">
-        <attribute name="advertisementId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="advertisementId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="agencyId" optional="YES" attributeType="String"/>
         <attribute name="agencyLogoUrl" optional="YES" attributeType="String"/>
         <attribute name="agencyPhoneDay" optional="YES" attributeType="String"/>
@@ -29,11 +29,11 @@
         <attribute name="picFilename1Medium" optional="YES" attributeType="String"/>
         <attribute name="picFilename1Small" optional="YES" attributeType="String"/>
         <attribute name="pictures" optional="YES" attributeType="Binary"/>
-        <attribute name="price" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="priceUnit" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="price" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="priceUnit" optional="YES" attributeType="String"/>
         <attribute name="score" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="searchInquiryTimestamp" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="sellingPrice" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sellingPrice" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="street" optional="YES" attributeType="String"/>
         <attribute name="surfaceLiving" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="surfaceUsable" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -44,6 +44,6 @@
         <attribute name="zip" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Property" positionX="-63" positionY="-18" width="128" height="644"/>
+        <element name="Property" positionX="-63" positionY="-18" width="128" height="658"/>
     </elements>
 </model>

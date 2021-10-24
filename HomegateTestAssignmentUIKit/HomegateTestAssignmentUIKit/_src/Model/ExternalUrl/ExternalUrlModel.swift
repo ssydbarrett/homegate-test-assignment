@@ -13,7 +13,7 @@ public enum ExternalUrl : String {
     case tour = "VIRTUAL_TOUR"
 }
 
-class ExternalUrlModel: BaseModel {
+class ExternalUrlModel: BaseModel { // NSObject, Codable { //
 
     // MARK:- Properties
     
@@ -26,6 +26,13 @@ class ExternalUrlModel: BaseModel {
     
     override init() {
         super.init()
+    }
+    
+    init(url: String, type: String, label: String) {
+        super.init()
+        self.url = url
+        self.type = type
+        self.label = label
     }
     
     // Decoding

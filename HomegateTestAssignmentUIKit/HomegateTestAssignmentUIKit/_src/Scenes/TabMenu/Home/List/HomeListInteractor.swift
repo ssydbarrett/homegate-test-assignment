@@ -14,24 +14,29 @@ import UIKit
 
 protocol HomeListBusinessLogic
 {
-  
+    
     // Call API
     func handlePropertyList(request: HomeList.PropertyList.Request)
+    
+    // Call Core data
+    func handleFavoriteList(request: HomeList.FavoriteList.Request)
 }
 
 protocol HomeListDataStore
 {
-  //var name: String { get set }
+    //var name: String { get set }
 }
 
 class HomeListInteractor: HomeListBusinessLogic, HomeListDataStore
 {
-  var presenter: HomeListPresentationLogic?
-  var worker: HomeListWorker?
-  //var name: String = ""
-  
-  // MARK: Call API
-  
+    
+    
+    var presenter: HomeListPresentationLogic?
+    var worker: HomeListWorker?
+    //var name: String = ""
+    
+    // MARK: Call API
+    
     func handlePropertyList(request: HomeList.PropertyList.Request) {
         
         // Get all properties
@@ -39,6 +44,23 @@ class HomeListInteractor: HomeListBusinessLogic, HomeListDataStore
             
             // Call presenter with result
             self.presenter?.presentPropertyList(response: HomeList.PropertyList.Response(result: result, status: status, networkError: error))
+        }
+    }
+    
+    // MARK: Call Core Data
+    
+    func handleFavoriteList(request: HomeList.FavoriteList.Request) {
+        
+        // Get list of ids from core data
+        do {
+            let favoriteIds = try CoreDataManager.fetchAllFavoritesId()
+            
+            // Call presenter with response
+            presenter?.presentFavoriteList(response: HomeList.FavoriteList.Response(result: favoriteIds, error: nil))
+        } catch let error as NSError  {
+            
+            // Call presenter with error
+            presenter?.presentFavoriteList(response: HomeList.FavoriteList.Response(result: nil, error: error))
         }
     }
 }

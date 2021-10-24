@@ -10,10 +10,14 @@ import CoreData
 
 class CoreDataManager: NSObject {
     
+    // Notification names
+    
+    static let notification_favorites_updated = NSNotification.Name("notification_favorites_updated")
+    
     // MARK: SELECT
     
     // Check if favorite exists
-    class func checkIfFavoriteExists(with advertisementId: Int) -> Bool {
+    class func checkIfFavoriteExists(with advertisementId: Int) throws -> Bool {
         
         // Get app delegate
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
@@ -40,12 +44,13 @@ class CoreDataManager: NSObject {
         // Catch error
         } catch let error as NSError {
             print("Could not check in Core data \(error), \(error.userInfo)")
-            return false
+            throw error
+            // return false
         }
     }
     
     // Get all favorites id
-    class func fetchAllFavoritesId() -> [Int] {
+    class func fetchAllFavoritesId() throws -> [Int] {
         
         // Get app delegate
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return [Int]() }
@@ -75,12 +80,13 @@ class CoreDataManager: NSObject {
         // Catch error
         } catch let error as NSError {
             print("Could not fetch from Core data \(error), \(error.userInfo)")
-            return [Int]()
+            throw error
+            // return [Int]()
         }
     }
     
     // Get all favorites
-    class func fetchAllFavorites() -> [PropertyModel] {
+    class func fetchAllFavorites() throws -> [PropertyModel] {
         
         // Get app delegate
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return [PropertyModel]() }
@@ -143,8 +149,8 @@ class CoreDataManager: NSObject {
                 propertyModel.searchInquiryTimestamp = favorite.value(forKey: "searchInquiryTimestamp") as? Int ?? 0
                 
                 // Get arrays
-                propertyModel.pictures = NSArray.unsecureUnarchived(from: favorite.value(forKey: "pictures") as? Data ?? Data()) as? [String?]? ?? [String]()
-                propertyModel.externalUrls = NSArray.unsecureUnarchived(from: favorite.value(forKey: "pictures") as? Data ?? Data()) as? [ExternalUrlModel]? ?? [ExternalUrlModel]()
+                propertyModel.pictures = try JSONDecoder().decode([String]?.self, from: favorite.value(forKey: "pictures") as? Data ?? Data())
+                propertyModel.externalUrls = try JSONDecoder().decode([ExternalUrlModel]?.self, from: favorite.value(forKey: "pictures") as? Data ?? Data())
                 
                 // Append to array
                 favorites.append(propertyModel)
@@ -156,14 +162,44 @@ class CoreDataManager: NSObject {
         // Catch error
         } catch let error as NSError {
             print("Could not fetch from Core data \(error), \(error.userInfo)")
-            return [PropertyModel]()
+            throw error
+            // return [PropertyModel]()
         }
     }
     
-    // MARK: SELECT
+    // MARK: UPDATE
     
     // Save favorite
-    class func save(favorite: PropertyModel) {
+    class func update(favorite: PropertyModel) throws {
+        
+        // Check if Favorite already exists
+        do {
+            let favoriteExists = try CoreDataManager.checkIfFavoriteExists(with: favorite.advertisementId ?? -666)
+            
+            // Delete if exists
+            if favoriteExists == true {
+                try CoreDataManager.deleteFavorite(with: favorite.advertisementId ?? -666)
+            }
+            
+            // Save if not
+            else {
+                try CoreDataManager.save(favorite: favorite)
+            }
+        }
+        
+        // Catch error
+        catch let error as NSError {
+            
+            // Print error
+            print("Could not update to Core data \(error), \(error.userInfo)")
+            throw error
+        }
+    }
+    
+    // MARK: CREATE
+    
+    // Save favorite
+    class func save(favorite: PropertyModel) throws {
         
         // Get app delegate
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
@@ -222,26 +258,30 @@ class CoreDataManager: NSObject {
         do {
             
             // Save arrays
-            property.setValue(try NSKeyedArchiver.archivedData(withRootObject: favorite.pictures ?? [String](), requiringSecureCoding: false), forKeyPath: "pictures")
-            property.setValue(try NSKeyedArchiver.archivedData(withRootObject: favorite.externalUrls ?? [String](), requiringSecureCoding: false), forKeyPath: "externalUrls")
+            property.setValue(try JSONEncoder().encode(favorite.externalUrls), forKeyPath: "pictures")
+            property.setValue(try JSONEncoder().encode(favorite.externalUrls), forKeyPath: "externalUrls")
             
             // Save favorite to managed context an new entity
             try managedContext.save()
+            
+            // Post notification that favorite list is updated
+            NotificationCenter.default.post(name: CoreDataManager.notification_favorites_updated, object: nil)
             
         // Catch error
         } catch let error as NSError {
             
             // Print error
             print("Could not save to Core data \(error), \(error.userInfo)")
+            throw error
         }
     }
     
     // MARK: DELETE
     
-    func deleteFavorite(with advertisementId: Int) -> Bool {
+    class func deleteFavorite(with advertisementId: Int) throws {
         
         // Get app delegate
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return false }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
         // Get managed context
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -255,17 +295,22 @@ class CoreDataManager: NSObject {
             // Get list of single favorites from managed context that
             let singleListOfFavorites: [NSManagedObject] = try managedContext.fetch(fetchRequest)
             
+            // No favorites found for deletion
+            if singleListOfFavorites.count == 0 {
+                return
+            }
+            
             // Delete object
             managedContext.delete(singleListOfFavorites.first ?? NSManagedObject())
             try managedContext.save()
             
-            // Return favorites array
-            return true
+            // Post notification that favorite list is updated
+            NotificationCenter.default.post(name: CoreDataManager.notification_favorites_updated, object: nil)
             
         // Catch error
         } catch let error as NSError {
             print("Could not delete from Core data \(error), \(error.userInfo)")
-            return false
+            throw error
         }
     }
 }

@@ -8,6 +8,12 @@
 import UIKit
 import SDWebImage
 
+// Define a custom protocol to handle favorite action
+protocol PropertyListTableViewCellDelegate {
+
+    func updateFavorite(model: PropertyModel)
+}
+
 class PropertyListTableViewCell: UITableViewCell {
 
     // MARK: - Outlets
@@ -32,8 +38,11 @@ class PropertyListTableViewCell: UITableViewCell {
     var context: BaseViewController!
     
     var model: PropertyModel!
+    var isFavorite: Bool!
     
     var indexPath: IndexPath!
+    
+    var delegate: PropertyListTableViewCellDelegate?
     
     // MARK: - Configuration
     // MARK:
@@ -65,6 +74,9 @@ class PropertyListTableViewCell: UITableViewCell {
         // Set Model
         cell.model = params?["model"] as? PropertyModel ?? PropertyModel()
         
+        // Set if favorite
+        cell.isFavorite = params?["isFavorite"] as? Bool ?? false
+        
         // Configure cell
         cell.configureCell()
         
@@ -85,6 +97,9 @@ class PropertyListTableViewCell: UITableViewCell {
         templateImage = btnFavorite.image(for: .selected)?.withRenderingMode(.alwaysTemplate)
         btnFavorite.setImage(templateImage, for: .selected)
         btnFavorite.tintColor = Color.iconRed
+        
+        // Set if favorite
+        btnFavorite.isSelected = self.isFavorite
         
         // Configure Price view and label
         templateImage = imgPriceBackground.image?.withRenderingMode(.alwaysTemplate)
@@ -142,6 +157,11 @@ class PropertyListTableViewCell: UITableViewCell {
     // MARK: Cell actions
     
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {
+        
+        guard let delegate = delegate else { return }
+        
+        delegate.updateFavorite(model: self.model)
+        
         sender.isSelected.toggle()
     }
 }

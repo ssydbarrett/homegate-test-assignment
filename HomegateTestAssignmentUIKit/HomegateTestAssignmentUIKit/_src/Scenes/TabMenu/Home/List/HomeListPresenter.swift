@@ -14,17 +14,21 @@ import UIKit
 
 protocol HomeListPresentationLogic
 {
-  
+    
     // Handle API response
     func presentPropertyList(response: HomeList.PropertyList.Response)
+    
+    // Call Core data
+    func presentFavoriteList(response: HomeList.FavoriteList.Response)
 }
 
 class HomeListPresenter: HomeListPresentationLogic
 {
-  weak var viewController: HomeListDisplayLogic?
-  
-  // MARK: API response
-  
+    
+    weak var viewController: HomeListDisplayLogic?
+    
+    // MARK: API response
+    
     func presentPropertyList(response: HomeList.PropertyList.Response) {
         
         // Check for errors
@@ -36,7 +40,7 @@ class HomeListPresenter: HomeListPresentationLogic
         else if response.result ?? "" == "" {
             viewController?.displayPropertyListAPIError(error: HomeList.PropertyList.Error(error: .noResponseData))
         }
-                                                        
+        
         // Handle successful response
         else {
             
@@ -61,6 +65,20 @@ class HomeListPresenter: HomeListPresentationLogic
                 return
             }
             
+        }
+    }
+    
+    // MARK: Core Data response
+    
+    func presentFavoriteList(response: HomeList.FavoriteList.Response) {
+        if response.error != nil {
+            
+            // Call view controller display error
+            viewController?.displayFavoriteListError(error: HomeList.FavoriteList.Error(error: response.error!))
+        } else {
+            
+            // Call successful view controller
+            viewController?.displayFavoriteList(viewModel: HomeList.FavoriteList.ViewModel(favoriteIdList: response.result ?? [Int]()))
         }
     }
 }

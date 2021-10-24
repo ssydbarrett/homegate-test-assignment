@@ -18,11 +18,15 @@ protocol HomeListDisplayLogic: AnyObject
     // Display Properties lists from API
     func displayPropertyList(viewModel: HomeList.PropertyList.ViewModel)
     func displayPropertyListAPIError(error: HomeList.PropertyList.Error)
+    
+    // Display Favorite IDS list from Core Data
+    func displayFavoriteList(viewModel: HomeList.FavoriteList.ViewModel)
+    func displayFavoriteListError(error: HomeList.FavoriteList.Error)
 }
 
 class HomeListViewController: BaseViewController, HomeListDisplayLogic
 {
-    
+
     var interactor: HomeListBusinessLogic?
     var router: (NSObjectProtocol & HomeListRoutingLogic & HomeListDataPassing)?
     
@@ -79,6 +83,7 @@ class HomeListViewController: BaseViewController, HomeListDisplayLogic
     // MARK: Properties
     
     var propertyList: [PropertyModel] = [PropertyModel]()
+    var favoriteIdList: [Int] = [Int]()
     
     // MARK: View lifecycle
     
@@ -88,6 +93,9 @@ class HomeListViewController: BaseViewController, HomeListDisplayLogic
         
         // Configure view
         configureView()
+        
+        // Get favorites
+        self.fetchFavoritesIds()
         
         // Call API
         callAPI()
@@ -141,6 +149,11 @@ class HomeListViewController: BaseViewController, HomeListDisplayLogic
         
         // Call interactor
         self.interactor?.handlePropertyList(request: HomeList.PropertyList.Request())
+    }
+    
+    // Fetch favorites ids
+    @objc func fetchFavoritesIds() {
+        self.interactor?.handleFavoriteList(request: HomeList.FavoriteList.Request())
     }
     
     // MARK: Button actions
@@ -199,6 +212,48 @@ class HomeListViewController: BaseViewController, HomeListDisplayLogic
             self.displayEmptyErrorView(with: error.error.rawValue, and: 1.0)
         }
     }
+    
+    // MARK: Display Core data result
+    
+    func displayFavoriteList(viewModel: HomeList.FavoriteList.ViewModel) {
+        
+        // Update favorite list
+        self.favoriteIdList = viewModel.favoriteIdList
+        
+        // Reload table on main queue
+        DispatchQueue.main.async {
+            self.tblTable.reloadData()
+        }
+    }
+    
+    func displayFavoriteListError(error: HomeList.FavoriteList.Error) {
+        
+        // Print error
+        print(error.error.localizedDescription)
+        
+        // Clear favorite list
+        self.favoriteIdList = [Int]()
+        
+        // Reload table on main queue
+        DispatchQueue.main.async {
+            self.tblTable.reloadData()
+        }
+    }
+    
+    // MARK: - Notification handling
+    // MARK:
+    
+    override func registerForNotifications() {
+        super.registerForNotifications()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchFavoritesIds), name: CoreDataManager.notification_favorites_updated, object: nil)
+    }
+    
+    override func unregisterForNotifications() {
+        NotificationCenter.default.removeObserver(self, name: CoreDataManager.notification_favorites_updated, object: nil)
+        
+        super.unregisterForNotifications()
+    }
 }
 
 // MARK: - Register cells
@@ -256,12 +311,34 @@ extension HomeListViewController: UITableViewDataSource {
     
     // Cell For Row at IndexPath
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return PropertyListTableViewCell.initCell(
+        
+        // Create cell
+        let cell = PropertyListTableViewCell.initCell(
             tableView,
             itemAtIndexPath: indexPath,
-            params: ["model": self.propertyList[indexPath.row]],
+            params: ["model": self.propertyList[indexPath.row],
+                     "isFavorite": self.favoriteIdList.contains(self.propertyList[indexPath.row].advertisementId ?? -666)],
             context: self)
+        
+        // Add delegate
+        cell.delegate = self
+        
+        // Return cell
+        return cell
     }
+}
+
+// MARK: Implement Property list delegate with update favorite action
+
+extension HomeListViewController: PropertyListTableViewCellDelegate {
     
+    // Update favorite
+    func updateFavorite(model: PropertyModel) {
+        do {
+            try CoreDataManager.update(favorite: model)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+    }
 }
 
