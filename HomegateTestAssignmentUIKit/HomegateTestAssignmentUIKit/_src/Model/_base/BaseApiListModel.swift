@@ -1,5 +1,5 @@
 //
-//  PropertyApiModel.swift
+//  BaseApiListModel.swift
 //  HomegateTestAssignmentUIKit
 //
 //  Created by Vladimir Lukic on 24.10.21..
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PropertyApiModel: BaseModel { // or it could be BaseApiListModel with generic class for items
+class BaseApiListModel<T: BaseModel>: BaseModel {
     
     // MARK:- Properties
     
@@ -21,7 +21,7 @@ class PropertyApiModel: BaseModel { // or it could be BaseApiListModel with gene
     var hasPreviousPage: Bool? = false
 
     // Items
-    var items: [PropertyModel]? = [PropertyModel]()
+    var items: [T]? = [T]()
     
     // MARK:- Constructors
     
@@ -41,7 +41,7 @@ class PropertyApiModel: BaseModel { // or it could be BaseApiListModel with gene
         itemsPerPage = try container.decodeIfPresent (Int.self, forKey: .itemsPerPage)
         hasNextPage = try container.decodeIfPresent (Bool.self, forKey: .hasNextPage)
         hasPreviousPage = try container.decodeIfPresent (Bool.self, forKey: .hasPreviousPage)
-        items = try container.decodeIfPresent ([PropertyModel].self, forKey: .items)
+        items = try container.decodeIfPresent ([T].self, forKey: .items)
     }
     
     // Encoding
@@ -91,3 +91,4 @@ class PropertyApiModel: BaseModel { // or it could be BaseApiListModel with gene
         case items = "items"
     }
 }
+

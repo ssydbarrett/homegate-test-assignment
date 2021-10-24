@@ -104,7 +104,7 @@
 		6C541B6B2724D675005F6124 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C541B6A2724D675005F6124 /* BaseModel.swift */; };
 		6C541B6D2724D6AB005F6124 /* ExternalUrlModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C541B6C2724D6AB005F6124 /* ExternalUrlModel.swift */; };
 		6C541B6F2724D904005F6124 /* PropertyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C541B6E2724D904005F6124 /* PropertyModel.swift */; };
-		6C541B712724E757005F6124 /* PropertyApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C541B702724E757005F6124 /* PropertyApiModel.swift */; };
+		6C541B732724EE90005F6124 /* BaseApiListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C541B722724EE90005F6124 /* BaseApiListModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,7 +226,7 @@
 		6C541B6A2724D675005F6124 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		6C541B6C2724D6AB005F6124 /* ExternalUrlModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalUrlModel.swift; sourceTree = "<group>"; };
 		6C541B6E2724D904005F6124 /* PropertyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyModel.swift; sourceTree = "<group>"; };
-		6C541B702724E757005F6124 /* PropertyApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyApiModel.swift; sourceTree = "<group>"; };
+		6C541B722724EE90005F6124 /* BaseApiListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApiListModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -621,6 +621,7 @@
 			isa = PBXGroup;
 			children = (
 				6C541B6A2724D675005F6124 /* BaseModel.swift */,
+				6C541B722724EE90005F6124 /* BaseApiListModel.swift */,
 			);
 			path = _base;
 			sourceTree = "<group>";
@@ -636,7 +637,6 @@
 		6C541B672724D526005F6124 /* Property */ = {
 			isa = PBXGroup;
 			children = (
-				6C541B702724E757005F6124 /* PropertyApiModel.swift */,
 				6C541B6E2724D904005F6124 /* PropertyModel.swift */,
 			);
 			path = Property;
@@ -838,7 +838,6 @@
 				6C541AE3272482DA005F6124 /* NVActivityIndicatorAnimationBallBeat.swift in Sources */,
 				6C541ADA272482DA005F6124 /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */,
 				6C541B5D2724B837005F6124 /* ConstantsAPI.swift in Sources */,
-				6C541B712724E757005F6124 /* PropertyApiModel.swift in Sources */,
 				6C541AA7272481D0005F6124 /* SplashInteractor.swift in Sources */,
 				6C541AF1272482DA005F6124 /* NVActivityIndicatorAnimationBallScaleRippleMultiple.swift in Sources */,
 				6C541ADD272482DA005F6124 /* NVActivityIndicatorAnimationBallDoubleBounce.swift in Sources */,
@@ -865,6 +864,7 @@
 				6C541B4927248DCE005F6124 /* TabMenuContainerPresenter.swift in Sources */,
 				6C541AEB272482DA005F6124 /* NVActivityIndicatorAnimationCircleStrokeSpin.swift in Sources */,
 				6C541AF8272482DA005F6124 /* NVActivityIndicatorAnimationBallPulseRise.swift in Sources */,
+				6C541B732724EE90005F6124 /* BaseApiListModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
