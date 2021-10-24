@@ -1,0 +1,6 @@
+framework module Pods_HomegateTestAssignmentUIKitTests {
+  umbrella header "Pods-HomegateTestAssignmentUIKitTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

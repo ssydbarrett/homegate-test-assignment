@@ -45,9 +45,10 @@ class PropertyModel: BaseModel {
     var priceUnit: String? = ""
            
     // Pictures
+    var picFilename1: String? = ""
     var picFilename1Small: String? = ""
     var picFilename1Medium: String? = ""
-    var pictures: [String]? = [String]()
+    var pictures: [String?]? = [String?]()
     
     // Not sure :D
     var listingType: String? = ""
@@ -100,9 +101,10 @@ class PropertyModel: BaseModel {
         price = try container.decodeIfPresent (Int.self, forKey: .price)
         sellingPrice = try container.decodeIfPresent (Int.self, forKey: .sellingPrice)
         priceUnit = try container.decodeIfPresent (String.self, forKey: .priceUnit)
+        picFilename1 = try container.decodeIfPresent (String.self, forKey: .picFilename1)
         picFilename1Small = try container.decodeIfPresent (String.self, forKey: .picFilename1Small)
         picFilename1Medium = try container.decodeIfPresent (String.self, forKey: .picFilename1Medium)
-        pictures = try container.decodeIfPresent ([String].self, forKey: .pictures)
+        pictures = try container.decodeIfPresent ([String?].self, forKey: .pictures)
         listingType = try container.decodeIfPresent (String.self, forKey: .listingType)
         interestedFormType = try container.decodeIfPresent (Int.self, forKey: .interestedFormType)
         agencyId = try container.decodeIfPresent (String.self, forKey: .agencyId)
@@ -144,6 +146,7 @@ class PropertyModel: BaseModel {
         try container.encodeIfPresent (price, forKey: .price)
         try container.encodeIfPresent (sellingPrice, forKey: .sellingPrice)
         try container.encodeIfPresent (priceUnit, forKey: .priceUnit)
+        try container.encodeIfPresent (picFilename1, forKey: .picFilename1)
         try container.encodeIfPresent (picFilename1Small, forKey: .picFilename1Small)
         try container.encodeIfPresent (picFilename1Medium, forKey: .picFilename1Medium)
         try container.encodeIfPresent (pictures, forKey: .pictures)
@@ -187,6 +190,7 @@ class PropertyModel: BaseModel {
         hasher.combine(price)
         hasher.combine(sellingPrice)
         hasher.combine(priceUnit)
+        hasher.combine(picFilename1)
         hasher.combine(picFilename1Small)
         hasher.combine(picFilename1Medium)
         hasher.combine(pictures)
@@ -242,6 +246,7 @@ class PropertyModel: BaseModel {
         case priceUnit = "priceUnit"
                
         // Pictures
+        case picFilename1 = "picFilename1"
         case picFilename1Small = "picFilename1Small"
         case picFilename1Medium = "picFilename1Medium"
         case pictures = "pictures"
@@ -262,4 +267,32 @@ class PropertyModel: BaseModel {
     }
 }
 
+// Clear images for usage
+
+extension PropertyModel {
+    
+    func getClearedPicFilename1() -> String? {
+        return self.picFilename1?.replacingOccurrences(of: "//uat.", with: "")
+    }
+    
+    func getClearedPicFilename1Small() -> String? {
+        return self.picFilename1Small?.replacingOccurrences(of: "//uat.", with: "")
+    }
+ 
+    func getClearedPicFilename1Medium() -> String? {
+        return self.picFilename1Medium?.replacingOccurrences(of: "//uat.", with: "")
+    }
+    
+    func getClearedPictures() -> [String?] {
+        var picturesCleared:[String?] = [String?]()
+        for picture in pictures ?? [String?]() {
+            picturesCleared.append(picture?.replacingOccurrences(of: "//uat.", with: ""))
+        }
+        return picturesCleared
+    }
+    
+    func getClearedAgencyLogoUrl() -> String? {
+        return self.agencyLogoUrl?.replacingOccurrences(of: "//uat.", with: "")
+    }
+}
 

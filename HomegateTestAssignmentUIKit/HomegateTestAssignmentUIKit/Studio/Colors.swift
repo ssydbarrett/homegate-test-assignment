@@ -16,10 +16,10 @@ struct Color {
     // Foreground
     static let foregroundBlack = UIColor.init(netHex: 0x253540)
     static let foregroundGrey = UIColor.init(netHex: 0x848587)
-    static let foregroundPurple = UIColor.init(netHex: 0xADAEB0)
+    static let foregroundPurple = UIColor.init(netHex: 0x99277D) // 5E3391) // ADAEB0)
     
     // Icon
-    static let iconRed = UIColor.init(netHex: 0xF60C0C)
+    static let iconRed = UIColor.init(netHex: 0xD32D7D) // B90E0A) // F60C0C)
 }
 
 // MARK: - UIColor Extensions

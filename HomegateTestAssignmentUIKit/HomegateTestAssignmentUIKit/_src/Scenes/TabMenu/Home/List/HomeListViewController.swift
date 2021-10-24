@@ -106,7 +106,7 @@ class HomeListViewController: BaseViewController, HomeListDisplayLogic
         }
         
         // Clear content inset of a table view
-        self.tblTable.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        self.tblTable.contentInset = UIEdgeInsets(top: -16.0, left: 0, bottom: 16, right: 0)
     }
     
     

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PropertyListTableViewCell: UITableViewCell {
 
@@ -14,11 +15,13 @@ class PropertyListTableViewCell: UITableViewCell {
     
     @IBOutlet weak var viewContent: UIView!
     
+    @IBOutlet weak var viewTop: UIView!
     @IBOutlet weak var imgProperty: UIImageView!
     @IBOutlet weak var btnFavorite: UIButton!
     @IBOutlet weak var imgPriceBackground: UIImageView!
     @IBOutlet weak var lblPrice: UILabel!
     
+    @IBOutlet weak var viewBottom: UIView!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var imgLocationMarker: UIImageView!
     @IBOutlet weak var lblStreet: UILabel!
@@ -72,7 +75,73 @@ class PropertyListTableViewCell: UITableViewCell {
     // Handle cell configuration
     func configureCell() {
         
+        // Configure content
+        Utils.addBorderTo(view: viewContent, cornerRadius: 4.0, borderColor: .separator, borderWidth: 1.0)
+        
+        // Configure favorite button
+        btnFavorite.backgroundColor = UIColor.clear
+        var templateImage = btnFavorite.image(for: .normal)?.withRenderingMode(.alwaysTemplate)
+        btnFavorite.setImage(templateImage, for: .normal)
+        templateImage = btnFavorite.image(for: .selected)?.withRenderingMode(.alwaysTemplate)
+        btnFavorite.setImage(templateImage, for: .selected)
+        btnFavorite.tintColor = Color.iconRed
+        
+        // Configure Price view and label
+        templateImage = imgPriceBackground.image?.withRenderingMode(.alwaysTemplate)
+        imgPriceBackground.image = templateImage
+        imgPriceBackground.tintColor = Color.foregroundPurple
+        lblPrice.text = String(format: "%@%@%@",
+                               String(model.price ?? 0),
+                               model.currency == nil || model.currency == "" ? "" : " ",
+                               model.currency ?? "")
+        
+        // Configure Title label
+        lblName.text = model.title ?? "Missing title"
+        
+        // Configure street icon and
+        templateImage = imgLocationMarker.image?.withRenderingMode(.alwaysTemplate)
+        imgLocationMarker.image = templateImage
+        imgLocationMarker.tintColor = Color.foregroundPurple
+        lblStreet.text = String(format: "%@%@%@",
+                                model.street ?? "",
+                                model.street == nil || model.street == "" || model.text == nil || model.text == "" ? "" : ", ",
+                               model.text ?? "")
+        lblStreet.textColor = Color.foregroundPurple
+        
+        // Configure image placeholder
+        imgProperty.image = UIImage(named: "ic-image-placeholder")?.withRenderingMode(.alwaysTemplate)
+        imgProperty.contentMode = .center
+        imgProperty.backgroundColor = .separator
+        imgProperty.tintColor = .label
+        
+        // Get Picture URL
+        var imageUrlString: String = ""
+        if model.getClearedPictures().count >= 1 {
+            imageUrlString = model.getClearedPictures()[0] ?? ""
+        } else if model.getClearedPicFilename1() != nil && model.getClearedPicFilename1() != "" {
+            imageUrlString = model.getClearedPicFilename1() ?? ""
+        } else if model.getClearedPicFilename1Medium() != nil && model.getClearedPicFilename1Medium() != "" {
+            imageUrlString = model.getClearedPicFilename1Medium() ?? ""
+        } else {
+            imageUrlString = model.getClearedPicFilename1Small() ?? ""
+        }
+        
+        // And last but not the least, Load image via SDWebImage
+        guard let imageUrl = URL(string: imageUrlString) else { return }
+        imgProperty.sd_setHighlightedImage(with: imageUrl, options: .progressiveLoad) { image, error, cacheType, url in
+        
+            // Set image if not nil
+            if image != nil {
+                self.imgProperty.image = image
+                self.imgProperty.contentMode = .scaleAspectFill
+                self.imgProperty.backgroundColor = .clear
+            }
+        }
     }
     
     // MARK: Cell actions
+    
+    @IBAction func favoriteButtonTapped(_ sender: UIButton) {
+        sender.isSelected.toggle()
+    }
 }
