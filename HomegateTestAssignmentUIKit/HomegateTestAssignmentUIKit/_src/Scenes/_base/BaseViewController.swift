@@ -40,7 +40,7 @@ class BaseViewController: UIViewController {
     var viewType = ViewType.PUSH
     
     // Params tranported through multiple view controllers
-    var params = NSDictionary()
+    var params = Dictionary<String, Any>()
     
     // MARK: - Lifecycle
     // MARK:
@@ -68,9 +68,10 @@ class BaseViewController: UIViewController {
         if btnBack != nil {
             Utils.configureButton(button: btnBack, title: "", font: nil, titleColor: Color.foregroundGrey, titleColorHighlighted: Color.foregroundGrey, backgroundImage: nil)
             
+            // Configure back button image
             let templateImage = btnBack.image(for: .normal)?.withRenderingMode(.alwaysTemplate)
             btnBack.setImage(templateImage, for: .normal)
-            btnBack.tintColor = Color.foregroundGrey
+            btnBack.tintColor = .label
         }
         
         // Configure dividers
@@ -117,12 +118,12 @@ class BaseViewController: UIViewController {
     }
     
     // Push to view controller
-    func pushToViewController(vc: String, storyboardName:String, params: NSDictionary?) {
+    func pushToViewController(vc: String, storyboardName:String, params: Dictionary<String, Any>?) {
         goToViewControllerWithIdentifier(vc: vc, params: params, storyBoardName: storyboardName , push: true)
     }
     
     // Present view controller
-    func presentToViewController(vc: String, storyboardName: String, params: NSDictionary?) {
+    func presentToViewController(vc: String, storyboardName: String, params: Dictionary<String, Any>?) {
         goToViewControllerWithIdentifier(vc: vc, params: params, storyBoardName: storyboardName, push: false)
     }
     
@@ -132,7 +133,7 @@ class BaseViewController: UIViewController {
     }
     
     // Go to view controller with identifier
-    private func goToViewControllerWithIdentifier(vc: String?, params: NSDictionary?, storyBoardName: String?, push: Bool) {
+    private func goToViewControllerWithIdentifier(vc: String?, params: Dictionary<String, Any>?, storyBoardName: String?, push: Bool) {
         
         let selectedStoryBoard = storyBoardName == nil ? self.storyboard : UIStoryboard(name: storyBoardName!, bundle: nil)
         

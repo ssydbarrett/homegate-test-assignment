@@ -16,15 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tpb-q6-mlb">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="36"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="haw-v6-rZs"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWR-wP-DbO">
-                                <rect key="frame" x="0.0" y="36" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVf-5w-1QS">
                                         <rect key="frame" x="91" y="0.0" width="231" height="60"/>
@@ -39,14 +32,19 @@
                                             <constraint firstAttribute="height" constant="1" id="2T6-r8-5Qo"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ore-qv-by1">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ore-qv-by1">
                                         <rect key="frame" x="16" y="0.0" width="59" height="59"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Ore-qv-by1" secondAttribute="height" multiplier="1:1" id="Avu-8D-UbP"/>
                                         </constraints>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="ic-arrow-back"/>
+                                        <state key="normal" image="ic-arrow-back">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="goBackWithSender:" destination="kCR-bW-qq4" eventType="touchUpInside" id="CaO-Jj-23f"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -68,19 +66,16 @@
                         <viewLayoutGuide key="safeArea" id="UK6-Jg-AdC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Tpb-q6-mlb" secondAttribute="trailing" id="LEv-Hm-YF8"/>
-                            <constraint firstItem="hWR-wP-DbO" firstAttribute="top" secondItem="Tpb-q6-mlb" secondAttribute="bottom" id="Szg-bH-5C1"/>
-                            <constraint firstItem="Tpb-q6-mlb" firstAttribute="top" secondItem="So8-Dj-IfP" secondAttribute="top" id="eK9-M9-kJZ"/>
+                            <constraint firstItem="hWR-wP-DbO" firstAttribute="top" secondItem="UK6-Jg-AdC" secondAttribute="top" id="eVD-db-2Wu"/>
                             <constraint firstItem="hWR-wP-DbO" firstAttribute="leading" secondItem="UK6-Jg-AdC" secondAttribute="leading" id="ob4-EV-0WP"/>
-                            <constraint firstItem="Tpb-q6-mlb" firstAttribute="leading" secondItem="So8-Dj-IfP" secondAttribute="leading" id="y3m-xL-eLT"/>
                             <constraint firstItem="hWR-wP-DbO" firstAttribute="trailing" secondItem="UK6-Jg-AdC" secondAttribute="trailing" id="yLR-zs-DdB"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnBack" destination="Ore-qv-by1" id="0vQ-Ln-Tqn"/>
                         <outlet property="constraintHeaderHeight" destination="gcR-DT-Ixv" id="VUy-RS-UUg"/>
-                        <outlet property="constraintStatusBarHeight" destination="haw-v6-rZs" id="0sh-rX-CYk"/>
+                        <outlet property="lblTitle" destination="aVf-5w-1QS" id="SNZ-2w-waJ"/>
                         <outlet property="viewHeader" destination="hWR-wP-DbO" id="X3B-hF-i1v"/>
-                        <outlet property="viewStatusBar" destination="Tpb-q6-mlb" id="rTa-qo-DiR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jYA-P8-FsB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

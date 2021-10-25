@@ -253,6 +253,11 @@ extension FavoritesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return UIView()
     }
+    
+    // Open details view controller on cell tap
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        router?.routeToDetailsViewController(params: ["model": propertyList[indexPath.row]])
+    }
 }
 
 // MARK: - UITableViewDatasource
