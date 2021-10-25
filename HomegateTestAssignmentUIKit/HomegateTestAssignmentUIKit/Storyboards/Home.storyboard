@@ -62,11 +62,20 @@
                                     <constraint firstItem="aVf-5w-1QS" firstAttribute="leading" secondItem="Ore-qv-by1" secondAttribute="trailing" constant="16" id="uSz-rc-ZM2"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Real estate details section " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Sgt-zm-fNj">
+                                <rect key="frame" x="16" y="438" width="382" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UK6-Jg-AdC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Sgt-zm-fNj" firstAttribute="leading" secondItem="So8-Dj-IfP" secondAttribute="leading" constant="16" id="IRc-t4-tFO"/>
+                            <constraint firstItem="Sgt-zm-fNj" firstAttribute="centerY" secondItem="So8-Dj-IfP" secondAttribute="centerY" id="IUB-MQ-l7B"/>
                             <constraint firstItem="hWR-wP-DbO" firstAttribute="top" secondItem="UK6-Jg-AdC" secondAttribute="top" id="eVD-db-2Wu"/>
+                            <constraint firstItem="UK6-Jg-AdC" firstAttribute="trailing" secondItem="Sgt-zm-fNj" secondAttribute="trailing" constant="16" id="gfL-Gh-y7g"/>
                             <constraint firstItem="hWR-wP-DbO" firstAttribute="leading" secondItem="UK6-Jg-AdC" secondAttribute="leading" id="ob4-EV-0WP"/>
                             <constraint firstItem="hWR-wP-DbO" firstAttribute="trailing" secondItem="UK6-Jg-AdC" secondAttribute="trailing" id="yLR-zs-DdB"/>
                         </constraints>
@@ -84,7 +93,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic-arrow-back" width="32" height="32"/>
+        <image name="ic-arrow-back" width="16" height="16"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
