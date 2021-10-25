@@ -307,10 +307,10 @@
             </objects>
             <point key="canvasLocation" x="2264" y="769"/>
         </scene>
-        <!--Home List View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="yr2-nA-AsD">
             <objects>
-                <viewController storyboardIdentifier="HomeListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yXB-rJ-gWF" customClass="HomeListViewController" customModule="HomegateTestAssignmentUIKit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yXB-rJ-gWF" customClass="HomeViewController" customModule="HomegateTestAssignmentUIKit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vFT-gz-YUm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
