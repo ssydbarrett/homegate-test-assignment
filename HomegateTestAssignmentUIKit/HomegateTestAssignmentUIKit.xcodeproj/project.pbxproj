@@ -113,6 +113,8 @@
 		6C7936222727275700293E88 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C79361C2727275700293E88 /* HomeInteractor.swift */; };
 		6C7936242727306E00293E88 /* HomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7936232727306E00293E88 /* HomeListView.swift */; };
 		6C7936262727308C00293E88 /* HomeMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7936252727308C00293E88 /* HomeMapView.swift */; };
+		6C793628272734ED00293E88 /* HomeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C793627272734ED00293E88 /* HomeListView.xib */; };
+		6C79362A27274DF800293E88 /* HomeMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C79362927274DF800293E88 /* HomeMapView.xib */; };
 		958C7800B03743FBFE5F719E /* Pods_HomegateTestAssignmentUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B4C2E02F489C371F8AF614C /* Pods_HomegateTestAssignmentUIKit.framework */; };
 		AE8942AC697C615DD24DE651 /* Pods_HomegateTestAssignmentUIKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4E156261CD59D0038327933 /* Pods_HomegateTestAssignmentUIKitTests.framework */; };
 /* End PBXBuildFile section */
@@ -246,6 +248,8 @@
 		6C79361C2727275700293E88 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		6C7936232727306E00293E88 /* HomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListView.swift; sourceTree = "<group>"; };
 		6C7936252727308C00293E88 /* HomeMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMapView.swift; sourceTree = "<group>"; };
+		6C793627272734ED00293E88 /* HomeListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeListView.xib; sourceTree = "<group>"; };
+		6C79362927274DF800293E88 /* HomeMapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeMapView.xib; sourceTree = "<group>"; };
 		9BD0AB076518A986F2DEA6A7 /* Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests.release.xcconfig"; path = "Target Support Files/Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests/Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9C9F8BCBE5A03A9BB9B8FCB4 /* Pods-HomegateTestAssignmentUIKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomegateTestAssignmentUIKit.debug.xcconfig"; path = "Target Support Files/Pods-HomegateTestAssignmentUIKit/Pods-HomegateTestAssignmentUIKit.debug.xcconfig"; sourceTree = "<group>"; };
 		BA6AF3E9FBF2195C445EC39C /* Pods-HomegateTestAssignmentUIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomegateTestAssignmentUIKit.release.xcconfig"; path = "Target Support Files/Pods-HomegateTestAssignmentUIKit/Pods-HomegateTestAssignmentUIKit.release.xcconfig"; sourceTree = "<group>"; };
@@ -563,6 +567,7 @@
 			isa = PBXGroup;
 			children = (
 				6C7936232727306E00293E88 /* HomeListView.swift */,
+				6C793627272734ED00293E88 /* HomeListView.xib */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -729,6 +734,7 @@
 			isa = PBXGroup;
 			children = (
 				6C7936252727308C00293E88 /* HomeMapView.swift */,
+				6C79362927274DF800293E88 /* HomeMapView.xib */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -856,7 +862,9 @@
 				6C541B7E272569F1005F6124 /* FavoritesTableViewCell.xib in Resources */,
 				6C541A6D27247EB3005F6124 /* LaunchScreen.storyboard in Resources */,
 				6C541A6A27247EB3005F6124 /* Assets.xcassets in Resources */,
+				6C793628272734ED00293E88 /* HomeListView.xib in Resources */,
 				6C541A6527247EB0005F6124 /* Main.storyboard in Resources */,
+				6C79362A27274DF800293E88 /* HomeMapView.xib in Resources */,
 				6C541B502724940F005F6124 /* Home.storyboard in Resources */,
 				6C541B542724942C005F6124 /* Account.storyboard in Resources */,
 				6C541B5227249422005F6124 /* Favorites.storyboard in Resources */,

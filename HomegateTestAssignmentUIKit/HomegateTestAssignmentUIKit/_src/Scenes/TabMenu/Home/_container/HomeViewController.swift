@@ -74,16 +74,31 @@ class HomeViewController: BaseViewController, HomeDisplayLogic
     
     // MARK: Outlets
     
-    @IBOutlet weak var tblTable: UITableView!
+    // Header
+    @IBOutlet weak var imgLogo: UIImageView!
+    @IBOutlet weak var viewListMap: UIView!
+    @IBOutlet weak var btnList: UIButton!
+    @IBOutlet weak var btnMap: UIButton!
     
+    // Container views
+    @IBOutlet weak var viewListContainer: UIView!
+    @IBOutlet weak var viewMapContainer: UIView!
+    
+    // Empty view
     @IBOutlet weak var viewEmptyError: UIView!
     @IBOutlet weak var lblEmptyError: UILabel!
     @IBOutlet weak var btnTryAgain: UIButton!
     
     // MARK: Properties
     
+    var viewList: HomeListView!
+    var viewMap: HomeMapView!
+    
     var propertyList: [PropertyModel] = [PropertyModel]()
     var favoriteIdList: [Int] = [Int]()
+    
+    // Flags
+    var isShowingList = true
     
     // MARK: View lifecycle
     
@@ -104,20 +119,34 @@ class HomeViewController: BaseViewController, HomeDisplayLogic
     // Configure view
     func configureView() {
         
-        // Init table view and set delegate
-        if self.tblTable != nil {
-            self.tblTable.delegate = self
-            self.tblTable.dataSource = self
-            
-            // Regster table cell
-            registerCellsForTableView()
-        }
+        // Init and configure list view
+        viewList = Bundle.main.loadNibNamed("HomeListView",
+                                            owner: nil,
+                                            options: nil)![0] as? HomeListView ?? HomeListView()
+        viewList.frame = CGRect(x: 0.0, y: 0.0, width: self.viewListContainer.frame.size.width, height: self.viewListContainer.frame.size.height)
+        viewList.context = self
+        viewList.configureListView()
+        viewListContainer.addSubview(viewList)
         
-        // Clear content inset of a table view
-        self.tblTable.contentInset = UIEdgeInsets(top: -16.0, left: 0, bottom: 24, right: 0)
+        // Init and configure Map view
+        viewMap = Bundle.main.loadNibNamed("HomeMapView",
+                                            owner: nil,
+                                            options: nil)![0] as? HomeMapView ?? HomeMapView()
+        viewMap.frame = CGRect(x: 0.0, y: 0.0, width: self.viewListContainer.frame.size.width, height: self.viewListContainer.frame.size.height)
+        viewMap.context = self
+        viewMap.configureMapView()
+        viewMapContainer.addSubview(viewMap)
         
-        // Hide table view initially
-        self.tblTable.alpha = 0.0
+        // Resize button images
+        btnList.setImage(UIImage(named: "ic-list-view")?.resizeWithWidth(width: 28.0), for: .normal)
+        btnMap.setImage(UIImage(named: "ic-map-view")?.resizeWithWidth(width: 28.0), for: .normal)
+        
+        // Hide components initially
+        self.viewListMap.alpha = 0.0
+        self.btnList.alpha = 0.0
+        self.btnMap.alpha = 0.0
+        self.viewListContainer.alpha = 0.0
+        self.viewMapContainer.alpha = 0.0
     }
     
     // Handle empty / error view
@@ -125,7 +154,7 @@ class HomeViewController: BaseViewController, HomeDisplayLogic
         
         // Show / hide empty / error view and show table based on alpha
         self.viewEmptyError.alpha = alpha
-        self.tblTable.alpha = alpha == 0.0 ? 1.0 : 0.0
+        self.viewList.tblTable.alpha = alpha == 0.0 ? 1.0 : 0.0
         
         // Send subview to front / back
         if alpha == 0.0 {
@@ -136,6 +165,18 @@ class HomeViewController: BaseViewController, HomeDisplayLogic
         
         // Set label
         self.lblEmptyError.text = label
+    }
+    
+    // Handle header buttons and containers
+    func displayListMapView(alpha: CGFloat = 1.0) {
+        self.viewListMap.alpha = alpha
+        UIView.animate(withDuration: 0.15, delay: 0.0, options: .transitionCrossDissolve) { [self] in
+            self.btnList.alpha = self.isShowingList ? 0.0 : 1.0
+            self.viewListContainer.alpha = self.isShowingList ? 1.0 : 0.0
+            self.btnMap.alpha = self.isShowingList ? 1.0 : 0.0
+            self.viewMapContainer.alpha = isShowingList ? 0.0 : 1.0
+        } completion: { completed in }
+
     }
     
     // MARK: API
@@ -160,6 +201,12 @@ class HomeViewController: BaseViewController, HomeDisplayLogic
     
     // MARK: Button actions
     
+    // Show list action action
+    @IBAction func showListOrMap(_ sender: UIButton) {
+        isShowingList.toggle()
+        displayListMapView()
+    }
+    
     // Handle try again action
     @IBAction func tryAgain(_ sender: UIButton) {
         
@@ -183,19 +230,21 @@ class HomeViewController: BaseViewController, HomeDisplayLogic
                 // Clear model
                 self.propertyList = [PropertyModel]()
                 
-                // Show error view
+                // Show error view // Hide containers
                 self.displayEmptyErrorView(with: "Property list is empty.", and: 1.0)
+                self.displayListMapView(alpha: 0.0)
                 return
             }
             
-            // Hide error view
+            // Hide error view / Show containers
             else {
                 self.displayEmptyErrorView(with: "", and: 0.0)
+                self.displayListMapView()
             }
             
             // Update model and reload table
             self.propertyList = viewModel.proppertyList
-            self.tblTable.reloadData()
+            self.viewList.tblTable.reloadData()
         }
     }
     
@@ -212,6 +261,9 @@ class HomeViewController: BaseViewController, HomeDisplayLogic
             
             // Show error view
             self.displayEmptyErrorView(with: error.error.rawValue, and: 1.0)
+            
+            // Hide containers
+            self.displayListMapView(alpha: 0.0)
         }
     }
     
@@ -224,7 +276,7 @@ class HomeViewController: BaseViewController, HomeDisplayLogic
         
         // Reload table on main queue
         DispatchQueue.main.async {
-            self.tblTable.reloadData()
+            self.viewList.tblTable.reloadData()
         }
     }
     
@@ -238,7 +290,7 @@ class HomeViewController: BaseViewController, HomeDisplayLogic
         
         // Reload table on main queue
         DispatchQueue.main.async {
-            self.tblTable.reloadData()
+            self.viewList.tblTable.reloadData()
         }
     }
     
@@ -258,86 +310,9 @@ class HomeViewController: BaseViewController, HomeDisplayLogic
     }
 }
 
-// MARK: - Register cells
-// MARK:
+// MARK: Handle Property list delegate with update favorite action
 
 extension HomeViewController {
-    
-    // Register vehicle cell
-    func registerCellsForTableView() {
-        let nibName = UINib(nibName: "PropertyListTableViewCell", bundle:nil)
-        self.tblTable.register(nibName, forCellReuseIdentifier: "PropertyListTableViewCell")
-    }
-}
-
-// MARK: - UITableViewDelegate
-// MARK:
-
-extension HomeViewController: UITableViewDelegate {
-    
-    // Estimated cell height
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
-    // Cell height for row at index path
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
-    // Height for header
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.0
-    }
-    
-    // Header view
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
-    }
-    
-    // Open details view controller on cell tap
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        router?.routeToDetailsViewController(params: ["model": propertyList[indexPath.row]])
-    }
-}
-
-// MARK: - UITableViewDatasource
-// MARK:
-
-extension HomeViewController: UITableViewDataSource {
-    
-    // Number of sections
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    // Number of rows in section
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.propertyList.count
-    }
-    
-    // Cell For Row at IndexPath
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        // Create cell
-        let cell = PropertyListTableViewCell.initCell(
-            tableView,
-            itemAtIndexPath: indexPath,
-            params: ["model": self.propertyList[indexPath.row],
-                     "isFavorite": self.favoriteIdList.contains(self.propertyList[indexPath.row].advertisementId ?? -666)],
-            context: self)
-        
-        // Add delegate
-        cell.delegate = self
-        
-        // Return cell
-        return cell
-    }
-}
-
-// MARK: Implement Property list delegate with update favorite action
-
-extension HomeViewController: PropertyListTableViewCellDelegate {
     
     // Update favorite
     func updateFavorite(model: PropertyModel) {

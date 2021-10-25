@@ -8,6 +8,14 @@
 import UIKit
 
 class HomeMapView: UIView {
+    
+    // MARK: Outlets
+    
+    // @IBOutlet weak var tblTable: UITableView! // Google maps view
+    
+    // MARK: Properties
+    
+    var context: HomeViewController!
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -17,4 +25,7 @@ class HomeMapView: UIView {
     }
     */
 
+    func configureMapView() {
+        
+    }
 }
