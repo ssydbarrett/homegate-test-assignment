@@ -115,6 +115,8 @@
 		6C7936262727308C00293E88 /* HomeMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7936252727308C00293E88 /* HomeMapView.swift */; };
 		6C793628272734ED00293E88 /* HomeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C793627272734ED00293E88 /* HomeListView.xib */; };
 		6C79362A27274DF800293E88 /* HomeMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C79362927274DF800293E88 /* HomeMapView.xib */; };
+		6C79362E27276CBF00293E88 /* GoogleMapsInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C79362D27276CBE00293E88 /* GoogleMapsInfoView.swift */; };
+		6C79363027276CE300293E88 /* GoogleMapsInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C79362F27276CE300293E88 /* GoogleMapsInfoView.xib */; };
 		958C7800B03743FBFE5F719E /* Pods_HomegateTestAssignmentUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B4C2E02F489C371F8AF614C /* Pods_HomegateTestAssignmentUIKit.framework */; };
 		AE8942AC697C615DD24DE651 /* Pods_HomegateTestAssignmentUIKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4E156261CD59D0038327933 /* Pods_HomegateTestAssignmentUIKitTests.framework */; };
 /* End PBXBuildFile section */
@@ -250,6 +252,8 @@
 		6C7936252727308C00293E88 /* HomeMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMapView.swift; sourceTree = "<group>"; };
 		6C793627272734ED00293E88 /* HomeListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeListView.xib; sourceTree = "<group>"; };
 		6C79362927274DF800293E88 /* HomeMapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeMapView.xib; sourceTree = "<group>"; };
+		6C79362D27276CBE00293E88 /* GoogleMapsInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsInfoView.swift; sourceTree = "<group>"; };
+		6C79362F27276CE300293E88 /* GoogleMapsInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoogleMapsInfoView.xib; sourceTree = "<group>"; };
 		9BD0AB076518A986F2DEA6A7 /* Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests.release.xcconfig"; path = "Target Support Files/Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests/Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9C9F8BCBE5A03A9BB9B8FCB4 /* Pods-HomegateTestAssignmentUIKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomegateTestAssignmentUIKit.debug.xcconfig"; path = "Target Support Files/Pods-HomegateTestAssignmentUIKit/Pods-HomegateTestAssignmentUIKit.debug.xcconfig"; sourceTree = "<group>"; };
 		BA6AF3E9FBF2195C445EC39C /* Pods-HomegateTestAssignmentUIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomegateTestAssignmentUIKit.release.xcconfig"; path = "Target Support Files/Pods-HomegateTestAssignmentUIKit/Pods-HomegateTestAssignmentUIKit.release.xcconfig"; sourceTree = "<group>"; };
@@ -450,6 +454,7 @@
 		6C541A9A27248199005F6124 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6C79362B27276C9500293E88 /* GoogleMaps */,
 				6C541B74272567E0005F6124 /* TableViewCells */,
 			);
 			path = View;
@@ -739,6 +744,23 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		6C79362B27276C9500293E88 /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				6C79362C27276C9F00293E88 /* InfoView */,
+			);
+			path = GoogleMaps;
+			sourceTree = "<group>";
+		};
+		6C79362C27276C9F00293E88 /* InfoView */ = {
+			isa = PBXGroup;
+			children = (
+				6C79362D27276CBE00293E88 /* GoogleMapsInfoView.swift */,
+				6C79362F27276CE300293E88 /* GoogleMapsInfoView.xib */,
+			);
+			path = InfoView;
+			sourceTree = "<group>";
+		};
 		CA83460A15544420F391E02B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -761,6 +783,7 @@
 				6C541A5727247EB0005F6124 /* Frameworks */,
 				6C541A5827247EB0005F6124 /* Resources */,
 				D5644EFD72C3511219BD2B0D /* [CP] Embed Pods Frameworks */,
+				5DD47E6933511BBE0A0A75A6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -799,6 +822,7 @@
 				6C541A7A27247EB3005F6124 /* Frameworks */,
 				6C541A7B27247EB3005F6124 /* Resources */,
 				CFB7A009F519CA03C8CC06A7 /* [CP] Embed Pods Frameworks */,
+				09DD231A1AFD9DF9793C536E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -862,6 +886,7 @@
 				6C541B7E272569F1005F6124 /* FavoritesTableViewCell.xib in Resources */,
 				6C541A6D27247EB3005F6124 /* LaunchScreen.storyboard in Resources */,
 				6C541A6A27247EB3005F6124 /* Assets.xcassets in Resources */,
+				6C79363027276CE300293E88 /* GoogleMapsInfoView.xib in Resources */,
 				6C793628272734ED00293E88 /* HomeListView.xib in Resources */,
 				6C541A6527247EB0005F6124 /* Main.storyboard in Resources */,
 				6C79362A27274DF800293E88 /* HomeMapView.xib in Resources */,
@@ -888,6 +913,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		09DD231A1AFD9DF9793C536E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests/Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests/Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests/Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3D168B0A8E0E86AB8BF47FAA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -908,6 +950,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5DD47E6933511BBE0A0A75A6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HomegateTestAssignmentUIKit/Pods-HomegateTestAssignmentUIKit-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HomegateTestAssignmentUIKit/Pods-HomegateTestAssignmentUIKit-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HomegateTestAssignmentUIKit/Pods-HomegateTestAssignmentUIKit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7CDEE0D57806EF9FB577436C /* [CP] Check Pods Manifest.lock */ = {
@@ -1031,6 +1090,7 @@
 				6C541AF9272482DA005F6124 /* NVActivityIndicatorAnimationOrbit.swift in Sources */,
 				6C541B0C27248563005F6124 /* AccountModels.swift in Sources */,
 				6C541AF3272482DA005F6124 /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
+				6C79362E27276CBF00293E88 /* GoogleMapsInfoView.swift in Sources */,
 				6C541AE7272482DA005F6124 /* NVActivityIndicatorAnimationSquareSpin.swift in Sources */,
 				6C541B0927248563005F6124 /* AccountPresenter.swift in Sources */,
 				6C541B6B2724D675005F6124 /* BaseModel.swift in Sources */,

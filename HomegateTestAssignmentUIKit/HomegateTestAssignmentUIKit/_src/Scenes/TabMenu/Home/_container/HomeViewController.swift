@@ -230,9 +230,10 @@ class HomeViewController: BaseViewController, HomeDisplayLogic
                 // Clear model
                 self.propertyList = [PropertyModel]()
                 
-                // Show error view // Hide containers
+                // Show error view // Hide containers / Reset map camera
                 self.displayEmptyErrorView(with: "Property list is empty.", and: 1.0)
                 self.displayListMapView(alpha: 0.0)
+                self.viewMap.resetCamera()
                 return
             }
             
@@ -245,6 +246,9 @@ class HomeViewController: BaseViewController, HomeDisplayLogic
             // Update model and reload table
             self.propertyList = viewModel.proppertyList
             self.viewList.tblTable.reloadData()
+            
+            // Update map with pins
+            self.viewMap.updateMapWithCoordinates()
         }
     }
     
@@ -277,6 +281,11 @@ class HomeViewController: BaseViewController, HomeDisplayLogic
         // Reload table on main queue
         DispatchQueue.main.async {
             self.viewList.tblTable.reloadData()
+            
+            // Update map info view if exists
+            if self.viewMap.gmInfoView != nil {
+                self.viewMap.gmInfoView?.updateFavoriteStatus()
+            }
         }
     }
     
@@ -291,6 +300,11 @@ class HomeViewController: BaseViewController, HomeDisplayLogic
         // Reload table on main queue
         DispatchQueue.main.async {
             self.viewList.tblTable.reloadData()
+            
+            // Update map info view if exists
+            if self.viewMap.gmInfoView != nil {
+                self.viewMap.gmInfoView?.updateFavoriteStatus()
+            }
         }
     }
     

@@ -113,7 +113,7 @@ class PropertyListTableViewCell: UITableViewCell {
         // Configure Title label
         lblName.text = model.title ?? "Missing title"
         
-        // Configure street icon and
+        // Configure street icon and label
         templateImage = imgLocationMarker.image?.withRenderingMode(.alwaysTemplate)
         imgLocationMarker.image = templateImage
         imgLocationMarker.tintColor = Color.foregroundPurple

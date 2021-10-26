@@ -1,6 +1,14 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
+## GoogleMaps
+
+Copyright 2021 Google
+
+## GooglePlaces
+
+Copyright 2021 Google
+
 ## SDWebImage
 
 Copyright (c) 2009-2020 Olivier Poitrey rs@dailymotion.com

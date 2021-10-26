@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
 import CoreData
 
 @main
@@ -20,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyBoard: UIStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
         let initViewController: UINavigationController = storyBoard.instantiateInitialViewController() as! UINavigationController
         self.window?.rootViewController = initViewController
+        
+        // Set google api key
+        GMSServices.provideAPIKey(Keys.GOOGLE_API_KEY)
+        GMSPlacesClient.provideAPIKey(Keys.GOOGLE_API_KEY)
         
         return true
     }

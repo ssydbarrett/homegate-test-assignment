@@ -7,6 +7,13 @@
 
 import UIKit
 
+// List of keys
+struct Keys {
+    
+    // Google api key
+    static let GOOGLE_API_KEY = "AIzaSyCdGOSgvtN-_4jMIrfDJ59qOeG9-JzTgFc"
+}
+
 // Configure type for completion handler of API calls
 typealias CompletionHandler = (_ result: String?, _ status: Int?, _ error: NetworkError?) -> Void
 

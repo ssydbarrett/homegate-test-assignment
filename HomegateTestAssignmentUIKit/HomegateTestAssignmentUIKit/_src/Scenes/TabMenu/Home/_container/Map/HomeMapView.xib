@@ -17,18 +17,17 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3EW-0l-P9k">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map section " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5D1-gN-0jW">
-                            <rect key="frame" x="16" y="399" width="382" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b75-gO-yoq" customClass="GMSMapView">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="5D1-gN-0jW" secondAttribute="trailing" constant="16" id="86C-dU-cGZ"/>
-                        <constraint firstItem="5D1-gN-0jW" firstAttribute="centerY" secondItem="3EW-0l-P9k" secondAttribute="centerY" id="IYt-DK-nnv"/>
-                        <constraint firstItem="5D1-gN-0jW" firstAttribute="leading" secondItem="3EW-0l-P9k" secondAttribute="leading" constant="16" id="pqJ-SQ-rur"/>
+                        <constraint firstItem="b75-gO-yoq" firstAttribute="leading" secondItem="3EW-0l-P9k" secondAttribute="leading" id="6Fo-dZ-cFt"/>
+                        <constraint firstAttribute="trailing" secondItem="b75-gO-yoq" secondAttribute="trailing" id="MFD-iU-6Nr"/>
+                        <constraint firstItem="b75-gO-yoq" firstAttribute="top" secondItem="3EW-0l-P9k" secondAttribute="top" id="vDk-ER-8ss"/>
+                        <constraint firstAttribute="bottom" secondItem="b75-gO-yoq" secondAttribute="bottom" id="yo3-WZ-uDp"/>
                     </constraints>
                 </view>
             </subviews>
@@ -40,6 +39,9 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="3EW-0l-P9k" secondAttribute="bottom" id="RRQ-N5-nEu"/>
                 <constraint firstItem="3EW-0l-P9k" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Zyo-yi-06E"/>
             </constraints>
+            <connections>
+                <outlet property="mapView" destination="b75-gO-yoq" id="MI2-mV-DGU"/>
+            </connections>
             <point key="canvasLocation" x="139" y="66"/>
         </view>
     </objects>

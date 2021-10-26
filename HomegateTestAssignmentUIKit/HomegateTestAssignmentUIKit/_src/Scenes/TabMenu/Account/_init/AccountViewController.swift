@@ -69,7 +69,19 @@ class AccountViewController: BaseViewController, AccountDisplayLogic
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        // Configure view
+        configureView()
+        
         doSomething()
+    }
+    
+    // MARK: Configuration
+    
+    func configureView() {
+        
+        // Update title label
+        self.lblTitle.text = "Registration / Login / Account section\n\nCheck for dark mode\n...on simulator: cmd+shift+a\n...on device: go to Settings"
     }
     
     // MARK: Do something

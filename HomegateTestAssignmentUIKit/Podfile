@@ -9,6 +9,10 @@ target 'HomegateTestAssignmentUIKit' do
   
   # Image handling
   pod 'SDWebImage'
+  
+  # Google maps
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
 
   target 'HomegateTestAssignmentUIKitTests' do
     inherit! :search_paths
