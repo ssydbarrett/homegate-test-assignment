@@ -272,27 +272,27 @@ class PropertyModel: BaseModel {
 extension PropertyModel {
     
     func getClearedPicFilename1() -> String? {
-        return self.picFilename1?.replacingOccurrences(of: "//uat.", with: "")
+        return self.picFilename1?.replacingOccurrences(of: "//uat.", with: "//")
     }
     
     func getClearedPicFilename1Small() -> String? {
-        return self.picFilename1Small?.replacingOccurrences(of: "//uat.", with: "")
+        return self.picFilename1Small?.replacingOccurrences(of: "//uat.", with: "//")
     }
  
     func getClearedPicFilename1Medium() -> String? {
-        return self.picFilename1Medium?.replacingOccurrences(of: "//uat.", with: "")
+        return self.picFilename1Medium?.replacingOccurrences(of: "//uat.", with: "//")
     }
     
     func getClearedPictures() -> [String?] {
         var picturesCleared:[String?] = [String?]()
         for picture in pictures ?? [String?]() {
-            picturesCleared.append(picture?.replacingOccurrences(of: "//uat.", with: ""))
+            picturesCleared.append(picture?.replacingOccurrences(of: "//uat.", with: "//"))
         }
         return picturesCleared
     }
     
     func getClearedAgencyLogoUrl() -> String? {
-        return self.agencyLogoUrl?.replacingOccurrences(of: "//uat.", with: "")
+        return self.agencyLogoUrl?.replacingOccurrences(of: "//uat.", with: "//")
     }
 }
 

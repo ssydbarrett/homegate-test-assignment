@@ -11,10 +11,14 @@
 //
 
 import UIKit
+import SafariServices
 
 @objc protocol HomeDetailsRoutingLogic
 {
   //func routeToSomewhere(segue: UIStoryboardSegue?)
+    
+    // Open safari view controller with provided link
+    func routeToExternalLink(params: Dictionary<String, Any>)
 }
 
 protocol HomeDetailsDataPassing
@@ -45,6 +49,24 @@ class HomeDetailsRouter: NSObject, HomeDetailsRoutingLogic, HomeDetailsDataPassi
   //}
 
   // MARK: Navigation
+    
+    // Open safari view controller with provided link
+    func routeToExternalLink(params: Dictionary<String, Any>) {
+        
+        // Get url from params
+        let url: String = params["url"] as? String ?? ""
+        let urlCleared = url.replacingOccurrences(of: "//uat.", with: "//")
+        guard let url = URL(string: urlCleared) else {
+            
+            // Handle bad url
+            Utils.showModalMessage(title: "Error", message: "Bad URL", context: viewController ?? UIApplication.topViewController(), handler: nil)
+            return
+        }
+        
+        // Present safari controller
+        let safariController = SFSafariViewController(url: url)
+        viewController?.present(safariController, animated: true, completion: nil)
+    }
   
   //func navigateToSomewhere(source: HomeDetailsViewController, destination: SomewhereViewController)
   //{

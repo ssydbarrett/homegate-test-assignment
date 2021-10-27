@@ -138,4 +138,13 @@ class GoogleMapsInfoView: UIView {
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {
         context.updateFavorite(model: self.model)
     }
+    
+    @IBAction func openDetailsButtonTapped(_ sender: UIButton) {
+        
+        // Get if property is favorited
+        let isFavorite = self.context.favoriteIdList.contains(self.model.advertisementId ?? -666)
+        
+        // Open details view controller
+        context.router?.routeToDetailsViewController(params: ["model": self.model ?? PropertyModel(), "isFavorite": isFavorite])
+    }
 }

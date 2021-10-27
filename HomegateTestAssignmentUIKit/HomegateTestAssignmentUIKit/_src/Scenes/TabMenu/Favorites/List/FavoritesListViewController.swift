@@ -236,12 +236,12 @@ extension FavoritesListViewController: UITableViewDelegate {
     
     // Estimated cell height
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 68.0
+        return 76.0
     }
     
     // Cell height for row at index path
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 68.0
+        return 76.0
     }
     
     // Height for header
@@ -256,7 +256,14 @@ extension FavoritesListViewController: UITableViewDelegate {
     
     // Open details view controller on cell tap
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        router?.routeToDetailsViewController(params: ["model": propertyList[indexPath.row]])
+        
+        // Get model from a cell
+        let cell = tableView.cellForRow(at: indexPath) as? FavoritesTableViewCell ?? FavoritesTableViewCell()
+        let model = cell.model
+        let isFavorite = true
+        
+        // Route to details
+        self.router?.routeToDetailsViewController(params: ["model": model ?? PropertyModel(), "isFavorite": isFavorite])
     }
 }
 

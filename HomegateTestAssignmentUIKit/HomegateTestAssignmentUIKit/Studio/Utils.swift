@@ -192,7 +192,6 @@ class Utils: NSObject {
     // MARK: - Alert View Controller
     // MARK:
     
-    // Good Action, don't use bottom one :)
     // Show modal message
     static func showModalMessage(title: String, message: String, context: UIViewController, handler: ((UIAlertAction) -> Void)?) {
         

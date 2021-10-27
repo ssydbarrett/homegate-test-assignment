@@ -20,10 +20,10 @@
                         <rect key="frame" x="16" y="16" width="382" height="271"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v4f-4p-I4J">
-                                <rect key="frame" x="0.0" y="0.0" width="382" height="186"/>
+                                <rect key="frame" x="0.0" y="0.0" width="382" height="191"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-image-placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="GmB-Ka-b59">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="186"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="191"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aes-kD-fS3">
                                         <rect key="frame" x="318" y="0.0" width="64" height="64"/>
@@ -39,7 +39,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ma6-T1-61F">
-                                        <rect key="frame" x="0.0" y="134.5" width="121.5" height="35.5"/>
+                                        <rect key="frame" x="0.0" y="139.5" width="121.5" height="35.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-price-alt" translatesAutoresizingMaskIntoConstraints="NO" id="Za0-41-a9a">
                                                 <rect key="frame" x="0.0" y="0.0" width="121.5" height="35.5"/>
@@ -72,30 +72,30 @@
                                     <constraint firstAttribute="trailing" secondItem="aes-kD-fS3" secondAttribute="trailing" id="VjS-A4-luF"/>
                                     <constraint firstAttribute="trailing" secondItem="GmB-Ka-b59" secondAttribute="trailing" id="XgZ-Lf-BQr"/>
                                     <constraint firstItem="GmB-Ka-b59" firstAttribute="leading" secondItem="v4f-4p-I4J" secondAttribute="leading" id="ZUf-fp-ihN"/>
-                                    <constraint firstAttribute="width" secondItem="v4f-4p-I4J" secondAttribute="height" multiplier="16:8" constant="10" id="a2v-k9-YtA"/>
+                                    <constraint firstAttribute="width" secondItem="v4f-4p-I4J" secondAttribute="height" multiplier="16:8" id="a2v-k9-YtA"/>
                                     <constraint firstItem="aes-kD-fS3" firstAttribute="top" secondItem="v4f-4p-I4J" secondAttribute="top" id="ihO-ke-Fwa"/>
                                     <constraint firstItem="GmB-Ka-b59" firstAttribute="top" secondItem="v4f-4p-I4J" secondAttribute="top" id="wTc-wJ-dLg"/>
                                     <constraint firstItem="ma6-T1-61F" firstAttribute="leading" secondItem="v4f-4p-I4J" secondAttribute="leading" id="x99-UC-3N7"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iKb-x9-Djw">
-                                <rect key="frame" x="0.0" y="186" width="382" height="85"/>
+                                <rect key="frame" x="0.0" y="191" width="382" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qxE-HE-Faq">
-                                        <rect key="frame" x="16" y="16" width="350" height="21"/>
+                                        <rect key="frame" x="16" y="16" width="350" height="16"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-pin-small" translatesAutoresizingMaskIntoConstraints="NO" id="q4M-QP-nIw">
-                                        <rect key="frame" x="16" y="45" width="22" height="32"/>
+                                        <rect key="frame" x="16" y="40" width="22" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="22" id="5GH-Tq-jQW"/>
                                             <constraint firstAttribute="height" constant="32" id="61t-vf-ddf"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Street Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="OU0-xF-9f4">
-                                        <rect key="frame" x="50" y="45" width="316" height="32"/>
+                                        <rect key="frame" x="50" y="40" width="316" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

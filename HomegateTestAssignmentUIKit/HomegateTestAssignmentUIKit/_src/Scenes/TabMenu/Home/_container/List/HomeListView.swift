@@ -87,7 +87,14 @@ extension HomeListView: UITableViewDelegate {
     
     // Open details view controller on cell tap
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.context.router?.routeToDetailsViewController(params: ["model": self.context.propertyList[indexPath.row]])
+        
+        // Get model from a cell
+        let cell = tableView.cellForRow(at: indexPath) as? PropertyListTableViewCell ?? PropertyListTableViewCell()
+        let model = cell.model
+        let isFavorite = cell.isFavorite
+        
+        // Route to details
+        self.context.router?.routeToDetailsViewController(params: ["model": model ?? PropertyModel(), "isFavorite": isFavorite ?? false])
     }
 }
 

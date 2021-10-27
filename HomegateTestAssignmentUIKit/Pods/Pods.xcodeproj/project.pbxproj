@@ -15,6 +15,7 @@
 			dependencies = (
 			);
 			name = GooglePlaces;
+			productName = GooglePlaces;
 		};
 		E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */ = {
 			isa = PBXAggregateTarget;
@@ -24,6 +25,7 @@
 			dependencies = (
 			);
 			name = GoogleMaps;
+			productName = GoogleMaps;
 		};
 /* End PBXAggregateTarget section */
 
@@ -251,7 +253,7 @@
 		095276B583A39FDBCBDE01D559581785 /* Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests-frameworks.sh"; sourceTree = "<group>"; };
 		096B0D084BBEDCE9B453CACE5F1A7490 /* SDWebImageDownloaderOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloaderOperation.h; path = SDWebImage/Core/SDWebImageDownloaderOperation.h; sourceTree = "<group>"; };
 		0BAF8BA41C6D73B2ECE7CB8C97F84477 /* SDAnimatedImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDAnimatedImageView.m; path = SDWebImage/Core/SDAnimatedImageView.m; sourceTree = "<group>"; };
-		0E154809121204E536860674673898AA /* Pods-HomegateTestAssignmentUIKit */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-HomegateTestAssignmentUIKit"; path = Pods_HomegateTestAssignmentUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E154809121204E536860674673898AA /* Pods_HomegateTestAssignmentUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomegateTestAssignmentUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E74146FC77147DEA5370C0DF8E9A6FD /* Pods-HomegateTestAssignmentUIKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HomegateTestAssignmentUIKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		0F97CFD4BC923C578300DC3C3CAF4699 /* SDImageAPNGCoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageAPNGCoder.h; path = SDWebImage/Core/SDImageAPNGCoder.h; sourceTree = "<group>"; };
 		11219D17FD7C99FF689E274BFD50F7C5 /* SDWebImageCacheKeyFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageCacheKeyFilter.m; path = SDWebImage/Core/SDWebImageCacheKeyFilter.m; sourceTree = "<group>"; };
@@ -346,7 +348,7 @@
 		9B23EF5C88027F5449C4E19439FD448B /* SDImageGraphics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageGraphics.h; path = SDWebImage/Core/SDImageGraphics.h; sourceTree = "<group>"; };
 		9C8AD9DA3A3BEE467FEA43A266FA6D23 /* SDWebImageOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageOperation.m; path = SDWebImage/Core/SDWebImageOperation.m; sourceTree = "<group>"; };
 		9D2E59962DB32AEA5BD4AD955E71D26F /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DF21526D3384123986715C51F672083 /* UIImage+MultiFormat.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+MultiFormat.m"; path = "SDWebImage/Core/UIImage+MultiFormat.m"; sourceTree = "<group>"; };
 		9E46184465125676B84623E49BD24390 /* UIColor+SDHexString.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+SDHexString.m"; path = "SDWebImage/Private/UIColor+SDHexString.m"; sourceTree = "<group>"; };
 		9F1F82FB2BE0620936A333CD9EC17E3C /* Pods-HomegateTestAssignmentUIKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HomegateTestAssignmentUIKit-Info.plist"; sourceTree = "<group>"; };
@@ -501,7 +503,6 @@
 				EDD3BF066A1B2DF5CFEB9D9765D35EC1 /* Core */,
 				3C6E0E437E486C52975ECAE6DD9F8771 /* Support Files */,
 			);
-			name = SDWebImage;
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
@@ -520,7 +521,6 @@
 				0D8D538AB159D254FC7B0E87BEC14C72 /* Resources */,
 				D31CD49706964EF7E47F3CD5C381A5EE /* Support Files */,
 			);
-			name = GooglePlaces;
 			path = GooglePlaces;
 			sourceTree = "<group>";
 		};
@@ -569,7 +569,7 @@
 		513A68CB55018D60B87FE3626ACC82C4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0E154809121204E536860674673898AA /* Pods-HomegateTestAssignmentUIKit */,
+				0E154809121204E536860674673898AA /* Pods_HomegateTestAssignmentUIKit.framework */,
 				E601217D9694C35063C67480882CC849 /* Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests */,
 				25913B7E8D9E257FA3AE3587A87B5F5D /* Pods-HomegateTestAssignmentUIKitTests */,
 				B0B214D775196BA7CA8E17E53048A493 /* SDWebImage */,
@@ -613,7 +613,6 @@
 				6D143519EEAD1ABF68EBD898FDF3A22D /* Maps */,
 				3B67BF66BA90157F1328022B3DC0CE63 /* Support Files */,
 			);
-			name = GoogleMaps;
 			path = GoogleMaps;
 			sourceTree = "<group>";
 		};
@@ -1043,7 +1042,7 @@
 			);
 			name = "Pods-HomegateTestAssignmentUIKit";
 			productName = Pods_HomegateTestAssignmentUIKit;
-			productReference = 0E154809121204E536860674673898AA /* Pods-HomegateTestAssignmentUIKit */;
+			productReference = 0E154809121204E536860674673898AA /* Pods_HomegateTestAssignmentUIKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
