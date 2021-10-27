@@ -41,7 +41,7 @@ class HomeListView: UIView {
         }
         
         // Clear content inset of a table view
-        self.tblTable.contentInset = UIEdgeInsets(top: -16.0, left: 0, bottom: 24, right: 0)
+        self.tblTable.contentInset = UIEdgeInsets(top: 8.0, left: 0, bottom: 24, right: 0)
         
         // Hide table view initially
         self.tblTable.alpha = 0.0

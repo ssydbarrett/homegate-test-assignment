@@ -284,7 +284,7 @@
 		22AD885D3D57E81A6E96E0E72504B6C8 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
 		24520ABAC4C02EFCAC73443B516D9474 /* Pods-HomegateTestAssignmentUIKit-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HomegateTestAssignmentUIKit-acknowledgements.plist"; sourceTree = "<group>"; };
 		24C185033A950996106A1321A07D53D5 /* UIButton+WebCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+WebCache.h"; path = "SDWebImage/Core/UIButton+WebCache.h"; sourceTree = "<group>"; };
-		25913B7E8D9E257FA3AE3587A87B5F5D /* Pods-HomegateTestAssignmentUIKitTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-HomegateTestAssignmentUIKitTests"; path = Pods_HomegateTestAssignmentUIKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		25913B7E8D9E257FA3AE3587A87B5F5D /* Pods_HomegateTestAssignmentUIKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomegateTestAssignmentUIKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28CAE1B32C64FE592270E4D4518AABA6 /* Pods-HomegateTestAssignmentUIKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-HomegateTestAssignmentUIKit-umbrella.h"; sourceTree = "<group>"; };
 		293B7E4E1EE233E1561A9D28C8EC115A /* SDDisplayLink.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDDisplayLink.h; path = SDWebImage/Private/SDDisplayLink.h; sourceTree = "<group>"; };
 		2B917262335BE1571B374FBF9BFDC41E /* SDWeakProxy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWeakProxy.m; path = SDWebImage/Private/SDWeakProxy.m; sourceTree = "<group>"; };
@@ -412,7 +412,7 @@
 		E3310F4CA709AA9E0B6C4CDCD86FF14B /* SDWebImageDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloader.h; path = SDWebImage/Core/SDWebImageDownloader.h; sourceTree = "<group>"; };
 		E3AD037779F3F103AEC8584022A78948 /* SDImageAssetManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageAssetManager.h; path = SDWebImage/Private/SDImageAssetManager.h; sourceTree = "<group>"; };
 		E50A0D63648C0D9187E0D4F19749F602 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+WebCacheOperation.m"; path = "SDWebImage/Core/UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
-		E601217D9694C35063C67480882CC849 /* Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests"; path = Pods_HomegateTestAssignmentUIKit_HomegateTestAssignmentUIKitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E601217D9694C35063C67480882CC849 /* Pods_HomegateTestAssignmentUIKit_HomegateTestAssignmentUIKitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HomegateTestAssignmentUIKit_HomegateTestAssignmentUIKitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7F7EDC2B28B227404B0EB5C1A18CFC8 /* SDImageCachesManagerOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCachesManagerOperation.h; path = SDWebImage/Private/SDImageCachesManagerOperation.h; sourceTree = "<group>"; };
 		ECF84B7D01F80524051BF23D430CE4DE /* SDDeviceHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDDeviceHelper.m; path = SDWebImage/Private/SDDeviceHelper.m; sourceTree = "<group>"; };
 		EEDB088700FFEABA013DAFE6FA490CC6 /* SDWebImageDefine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDefine.h; path = SDWebImage/Core/SDWebImageDefine.h; sourceTree = "<group>"; };
@@ -570,8 +570,8 @@
 			isa = PBXGroup;
 			children = (
 				0E154809121204E536860674673898AA /* Pods_HomegateTestAssignmentUIKit.framework */,
-				E601217D9694C35063C67480882CC849 /* Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests */,
-				25913B7E8D9E257FA3AE3587A87B5F5D /* Pods-HomegateTestAssignmentUIKitTests */,
+				E601217D9694C35063C67480882CC849 /* Pods_HomegateTestAssignmentUIKit_HomegateTestAssignmentUIKitUITests.framework */,
+				25913B7E8D9E257FA3AE3587A87B5F5D /* Pods_HomegateTestAssignmentUIKitTests.framework */,
 				B0B214D775196BA7CA8E17E53048A493 /* SDWebImage */,
 			);
 			name = Products;
@@ -1002,7 +1002,7 @@
 			);
 			name = "Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests";
 			productName = Pods_HomegateTestAssignmentUIKit_HomegateTestAssignmentUIKitUITests;
-			productReference = E601217D9694C35063C67480882CC849 /* Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests */;
+			productReference = E601217D9694C35063C67480882CC849 /* Pods_HomegateTestAssignmentUIKit_HomegateTestAssignmentUIKitUITests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		7762B6899FFEF0F872690D131C0DD6E3 /* Pods-HomegateTestAssignmentUIKitTests */ = {
@@ -1021,7 +1021,7 @@
 			);
 			name = "Pods-HomegateTestAssignmentUIKitTests";
 			productName = Pods_HomegateTestAssignmentUIKitTests;
-			productReference = 25913B7E8D9E257FA3AE3587A87B5F5D /* Pods-HomegateTestAssignmentUIKitTests */;
+			productReference = 25913B7E8D9E257FA3AE3587A87B5F5D /* Pods_HomegateTestAssignmentUIKitTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		B300F2DE849F50A55285D43DA2A6FAB0 /* Pods-HomegateTestAssignmentUIKit */ = {
@@ -1327,7 +1327,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests/Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1579,7 +1579,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-HomegateTestAssignmentUIKit/Pods-HomegateTestAssignmentUIKit-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1617,7 +1617,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-HomegateTestAssignmentUIKitTests/Pods-HomegateTestAssignmentUIKitTests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1654,7 +1654,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-HomegateTestAssignmentUIKit/Pods-HomegateTestAssignmentUIKit-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1691,7 +1691,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-HomegateTestAssignmentUIKitTests/Pods-HomegateTestAssignmentUIKitTests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1729,7 +1729,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests/Pods-HomegateTestAssignmentUIKit-HomegateTestAssignmentUIKitUITests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
